@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/hladek/Desktop/BulanciClient/Comunication/Socket/Socket.cpp
+Socket.h
+/Users/hladek/Desktop/BulanciClient/Comunication/Socket/Socket.h
+
+/Users/hladek/Desktop/BulanciClient/Comunication/Socket/Socket.h
+sys/types.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+netdb.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+
+/Users/hladek/Desktop/BulanciClient/main.cpp
+Comunication/Socket/Socket.h
+/Users/hladek/Desktop/BulanciClient/Comunication/Socket/Socket.h
+stdlib.h
+-
+
