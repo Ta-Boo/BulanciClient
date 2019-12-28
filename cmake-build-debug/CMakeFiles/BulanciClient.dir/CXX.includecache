@@ -6,11 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/hladek/Desktop/BulanciClient/Comunication/Socket/Socket.cpp
-Socket.h
-/Users/hladek/Desktop/BulanciClient/Comunication/Socket/Socket.h
-
-/Users/hladek/Desktop/BulanciClient/Comunication/Socket/Socket.h
+/home/tobo/Desktop/Projects/BulanciClient/Comunication/Socket/Socket.h
 sys/types.h
 -
 sys/socket.h
@@ -28,9 +24,9 @@ string.h
 unistd.h
 -
 
-/Users/hladek/Desktop/BulanciClient/main.cpp
+/home/tobo/Desktop/Projects/BulanciClient/main.cpp
 Comunication/Socket/Socket.h
-/Users/hladek/Desktop/BulanciClient/Comunication/Socket/Socket.h
+/home/tobo/Desktop/Projects/BulanciClient/Comunication/Socket/Socket.h
 stdlib.h
 -
 

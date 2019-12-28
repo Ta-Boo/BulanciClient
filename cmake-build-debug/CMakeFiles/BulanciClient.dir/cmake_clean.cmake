@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/BulanciClient.dir/main.cpp.o"
-  "CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o"
-  "BulanciClient.pdb"
   "BulanciClient"
+  "BulanciClient.pdb"
+  "CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o"
+  "CMakeFiles/BulanciClient.dir/main.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.
