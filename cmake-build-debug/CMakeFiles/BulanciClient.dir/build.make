@@ -94,6 +94,7 @@ BulanciClient_EXTERNAL_OBJECTS =
 BulanciClient: CMakeFiles/BulanciClient.dir/main.cpp.o
 BulanciClient: CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o
 BulanciClient: CMakeFiles/BulanciClient.dir/build.make
+BulanciClient: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
 BulanciClient: CMakeFiles/BulanciClient.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable BulanciClient"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BulanciClient.dir/link.txt --verbose=$(VERBOSE)

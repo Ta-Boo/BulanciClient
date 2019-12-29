@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/BulanciClient.dir/main.cpp.o CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o  -o BulanciClient 
+/usr/bin/c++  -g   CMakeFiles/BulanciClient.dir/main.cpp.o CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o  -o BulanciClient -lSDL2 /usr/lib/x86_64-linux-gnu/libSDL2_image.so 
