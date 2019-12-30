@@ -31,7 +31,7 @@ int main(int argc, char ** argv)
                                            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
 
     SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
-    SDL_Surface * image = IMG_Load("original.png"); //TODO zatial neviem ako dat lolalnu cestu treba fixnut zatial dajme absolutnu
+    SDL_Surface * image = IMG_Load("original.png");
     SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, image);
 
     while (!quit)
