@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/tobo/Desktop/Projects/BulanciClient/Comunication/Socket/Socket.h
+/home/natalia/CLionProjects/BulanciClient/Comunication/Socket/Socket.h
 sys/types.h
 -
 sys/socket.h
@@ -24,15 +24,15 @@ string.h
 unistd.h
 -
 
-/home/tobo/Desktop/Projects/BulanciClient/main.cpp
+/home/natalia/CLionProjects/BulanciClient/main.cpp
 Comunication/Socket/Socket.h
-/home/tobo/Desktop/Projects/BulanciClient/Comunication/Socket/Socket.h
+/home/natalia/CLionProjects/BulanciClient/Comunication/Socket/Socket.h
 stdlib.h
 -
 SDL.h
 -
 SDL_image.h
-/home/tobo/Desktop/Projects/BulanciClient/SDL_image.h
+/home/natalia/CLionProjects/BulanciClient/SDL_image.h
 
 /usr/include/SDL2/SDL.h
 SDL_main.h

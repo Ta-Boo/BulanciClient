@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/tobo/Downloads/clion-2019.3.2/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/natalia/clion-2019.3.2/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/tobo/Downloads/clion-2019.3.2/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/natalia/clion-2019.3.2/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tobo/Desktop/Projects/BulanciClient
+CMAKE_SOURCE_DIR = /home/natalia/CLionProjects/BulanciClient
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug
+CMAKE_BINARY_DIR = /home/natalia/CLionProjects/BulanciClient/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/BulanciClient.dir/depend.make
@@ -59,29 +59,29 @@ include CMakeFiles/BulanciClient.dir/flags.make
 
 CMakeFiles/BulanciClient.dir/main.cpp.o: CMakeFiles/BulanciClient.dir/flags.make
 CMakeFiles/BulanciClient.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/BulanciClient.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BulanciClient.dir/main.cpp.o -c /home/tobo/Desktop/Projects/BulanciClient/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/BulanciClient.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BulanciClient.dir/main.cpp.o -c /home/natalia/CLionProjects/BulanciClient/main.cpp
 
 CMakeFiles/BulanciClient.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BulanciClient.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tobo/Desktop/Projects/BulanciClient/main.cpp > CMakeFiles/BulanciClient.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/natalia/CLionProjects/BulanciClient/main.cpp > CMakeFiles/BulanciClient.dir/main.cpp.i
 
 CMakeFiles/BulanciClient.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BulanciClient.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tobo/Desktop/Projects/BulanciClient/main.cpp -o CMakeFiles/BulanciClient.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/natalia/CLionProjects/BulanciClient/main.cpp -o CMakeFiles/BulanciClient.dir/main.cpp.s
 
 CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o: CMakeFiles/BulanciClient.dir/flags.make
 CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o: ../Comunication/Socket/Socket.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o -c /home/tobo/Desktop/Projects/BulanciClient/Comunication/Socket/Socket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o -c /home/natalia/CLionProjects/BulanciClient/Comunication/Socket/Socket.cpp
 
 CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tobo/Desktop/Projects/BulanciClient/Comunication/Socket/Socket.cpp > CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/natalia/CLionProjects/BulanciClient/Comunication/Socket/Socket.cpp > CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.i
 
 CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tobo/Desktop/Projects/BulanciClient/Comunication/Socket/Socket.cpp -o CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/natalia/CLionProjects/BulanciClient/Comunication/Socket/Socket.cpp -o CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.s
 
 # Object files for target BulanciClient
 BulanciClient_OBJECTS = \
@@ -96,7 +96,7 @@ BulanciClient: CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o
 BulanciClient: CMakeFiles/BulanciClient.dir/build.make
 BulanciClient: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
 BulanciClient: CMakeFiles/BulanciClient.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable BulanciClient"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable BulanciClient"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BulanciClient.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -109,6 +109,6 @@ CMakeFiles/BulanciClient.dir/clean:
 .PHONY : CMakeFiles/BulanciClient.dir/clean
 
 CMakeFiles/BulanciClient.dir/depend:
-	cd /home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tobo/Desktop/Projects/BulanciClient /home/tobo/Desktop/Projects/BulanciClient /home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug /home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug /home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/CMakeFiles/BulanciClient.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/natalia/CLionProjects/BulanciClient/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/natalia/CLionProjects/BulanciClient /home/natalia/CLionProjects/BulanciClient /home/natalia/CLionProjects/BulanciClient/cmake-build-debug /home/natalia/CLionProjects/BulanciClient/cmake-build-debug /home/natalia/CLionProjects/BulanciClient/cmake-build-debug/CMakeFiles/BulanciClient.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/BulanciClient.dir/depend
 

@@ -5,31 +5,31 @@
 		<Option title="BulanciClient"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SDL2\;CMake Files\cmake\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SDL2\;CMake Files\cmake\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug"/>
+				<Option working_dir="/home/natalia/CLionProjects/BulanciClient/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug"/>
+				<Option working_dir="/home/natalia/CLionProjects/BulanciClient/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="BulanciClient">
-				<Option output="/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/BulanciClient" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug"/>
+				<Option output="/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/BulanciClient" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/natalia/CLionProjects/BulanciClient/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -45,15 +45,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 BulanciClient"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 BulanciClient"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="BulanciClient/fast">
-				<Option output="/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/BulanciClient" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug"/>
+				<Option output="/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/BulanciClient" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/natalia/CLionProjects/BulanciClient/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -69,39 +69,39 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 BulanciClient/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 BulanciClient/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug"/>
+				<Option working_dir="/home/natalia/CLionProjects/BulanciClient/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/tobo/Desktop/Projects/BulanciClient/Comunication/Socket/Socket.cpp">
+		<Unit filename="/home/natalia/CLionProjects/BulanciClient/Comunication/Socket/Socket.cpp">
 			<Option target="BulanciClient"/>
 		</Unit>
-		<Unit filename="/home/tobo/Desktop/Projects/BulanciClient/Comunication/Socket/Socket.h">
+		<Unit filename="/home/natalia/CLionProjects/BulanciClient/Comunication/Socket/Socket.h">
 			<Option target="BulanciClient"/>
 		</Unit>
-		<Unit filename="/home/tobo/Desktop/Projects/BulanciClient/main.cpp">
+		<Unit filename="/home/natalia/CLionProjects/BulanciClient/main.cpp">
 			<Option target="BulanciClient"/>
 		</Unit>
-		<Unit filename="/home/tobo/Desktop/Projects/BulanciClient/CMakeLists.txt">
+		<Unit filename="/home/natalia/CLionProjects/BulanciClient/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/tobo/Desktop/Projects/BulanciClient/../../../../../usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SDL2\"/>
+		<Unit filename="/home/natalia/CLionProjects/BulanciClient/../../../../usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SDL2\"/>
 		</Unit>
-		<Unit filename="/home/tobo/Desktop/Projects/BulanciClient/cmake/FindSDL2_image.cmake">
+		<Unit filename="/home/natalia/CLionProjects/BulanciClient/cmake/FindSDL2_image.cmake">
 			<Option virtualFolder="CMake Files\cmake\"/>
 		</Unit>
 	</Project>
