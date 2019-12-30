@@ -33,6 +33,14 @@ SDL.h
 -
 SDL_image.h
 /home/tobo/Desktop/Projects/BulanciClient/SDL_image.h
+stdio.h
+-
+direct.h
+-
+unistd.h
+-
+iostream
+-
 
 /usr/include/SDL2/SDL.h
 SDL_main.h
