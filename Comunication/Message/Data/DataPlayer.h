@@ -5,7 +5,7 @@
 #ifndef BULANCICLIENT_PLAYER_H
 #define BULANCICLIENT_PLAYER_H
 
-enum Facing {top, right, bot, left};
+enum Facing {TOP, RIGHT, BOT, LEFT};
 
 
 struct DataPlayer {

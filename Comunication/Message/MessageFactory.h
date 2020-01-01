@@ -6,8 +6,15 @@
 #define BULANCICLIENT_MESSAGEFACTORY_H
 
 
-class MessageFactory {
+#include "Message.h"
+#include <boost/algorithm/string.hpp>
 
+
+class MessageFactory {
+public:
+    MessageFactory();
+    ~MessageFactory();
+    Message createMessage(char* input);
 
 };
 

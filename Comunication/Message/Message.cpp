@@ -7,24 +7,24 @@
 #include "Data/DataPlayer.h"
 
 Message::Message() {
-    actualMessage = new string();
+    actualMessage = new  string();
 }
 
 Message::~Message() {
-    std::cout << *actualMessage <<endl;
     delete actualMessage;
-    std::cout << *actualMessage <<endl;
 }
 
 char* Message::toString() {
-//    actualMessage = new string();
+    int counter =1;
     for (DataPlayer player : players) {
-        string playerString = "Hp:" + to_string(player.hp) + "|" + "posX:" + to_string(player.possX) + "|" +
-                "posY" + to_string(player.possY) + "|" + "facing:" + to_string(player.facing) + "||";
+        string playerString = to_string(player.hp) + "|" + to_string(player.possX) +
+                "|" + to_string(player.possY) + "|" + to_string(player.facing) ;
+        if (counter < PLAYERS_COUNT) {
+            playerString+="*";
+        }
+        counter++;
         *actualMessage += playerString;
     }
-    *actualMessage += "}";
 
-    char* returningString  = &(*actualMessage)[0];
-    return returningString;
+    return &(*actualMessage)[0];
 }
