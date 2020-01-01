@@ -1,3 +1,0 @@
-/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/CMakeFiles/BulanciClient.dir
-/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/CMakeFiles/edit_cache.dir
