@@ -8,16 +8,6 @@
 class Message
 {
 public:
-    int _foo;
-    int _bar;
-    template<class Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-        ar & _foo;
-        ar & _bar;
-    }
-
-
 };
 
 
