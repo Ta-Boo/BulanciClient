@@ -9,6 +9,6 @@ find_package(SDL2_image REQUIRED)
 
 include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIR} )
 
-add_executable(BulanciClient main.cpp Comunication/Socket/Socket.cpp Comunication/Socket/Socket.h Comunication/Message/Message.cpp Comunication/Message/Message.h Comunication/Message/MessageFactory.cpp Comunication/Message/MessageFactory.h)
+add_executable(BulanciClient main.cpp Comunication/Socket/Socket.cpp Comunication/Socket/Socket.h Comunication/Message/Message.cpp Comunication/Message/Message.h Comunication/Message/MessageFactory.cpp Comunication/Message/MessageFactory.h Comunication/Message/Data/DataPlayer.h)
 
 target_link_libraries(BulanciClient ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} )

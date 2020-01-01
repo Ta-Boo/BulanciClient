@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include <iosfwd>
 #include <sstream>
+#include <iostream>
 #include "SDL_image.h"
 #include "Comunication/Message/Message.h"
 #include "Comunication/Socket/Socket.h"
@@ -51,11 +52,15 @@
 
 
 int main(int argc, char* argv[]) {
-    Socket socket = Socket();
-    socket.connectSocket(argv[1],atoi(argv[2]));
-//    socket.sendMessage();
-    socket.listenForMessages();
 
-
+    DataPlayer player;
+    player.possY =800;
+    player.facing = top;
+    player.possX = 600;
+    player.hp = 80;
+    Message message = Message();
+    message.players[0] = player;
+    message.players[1] = player;
+    char* final = message.toString();
     return 0;
 }
