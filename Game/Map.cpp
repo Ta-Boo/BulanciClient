@@ -1,29 +1,16 @@
-#include "Comunication/Socket/Socket.h"
-#include <stdlib.h>
-
-//int main(int argc, char *argv[])
-//{
 //
-//Socket socket1 = Socket();
-//    if(socket1.connectSocket(argv[1],atoi(argv[2])) != 0) {
-//        return  1;
-//    }
-//socket1.activateSocket();
-//    return 0;
-//}
+// Created by natalia on 30. 12. 2019.
+//
 
+#include <SDL_video.h>
+#include <SDL_render.h>
+#include <SDL_image.h>
+#include "Map.h"
 
-
-
-
-#include <SDL.h>
-#include "SDL_image.h"
-#include "Game/Map.h"
-
-
-int main(int argc, char ** argv)
-{
-    /*bool quit = false;
+Map::Map() {
+    player1 = new Player;
+    SDL_Surface * sur = player1->getImage();
+    bool quit = false;
     SDL_Event event;
 
     SDL_Init(SDL_INIT_VIDEO);
@@ -34,6 +21,7 @@ int main(int argc, char ** argv)
     SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
     SDL_Surface * image = IMG_Load("original.png"); //TODO zatial neviem ako dat lolalnu cestu treba fixnut zatial dajme absolutnu
     SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, image);
+    SDL_Texture * texture2 = SDL_CreateTextureFromSurface(renderer, sur);
 
     while (!quit)
     {
@@ -49,6 +37,7 @@ int main(int argc, char ** argv)
         //SDL_Rect dstrect = { 5, 5, 320, 240 };
         //SDL_RenderCopy(renderer, texture, NULL, &dstrect);
         SDL_RenderCopy(renderer, texture, NULL, NULL);
+        //SDL_RenderCopy(renderer, sur, NULL, NULL);
         SDL_RenderPresent(renderer);
     }
 
@@ -57,8 +46,4 @@ int main(int argc, char ** argv)
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
 
-    SDL_Quit();*/
-    Map *mapa = new Map;
-
-    return 0;
 }

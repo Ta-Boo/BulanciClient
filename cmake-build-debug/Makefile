@@ -150,6 +150,60 @@ Comunication/Socket/Socket.cpp.s:
 	$(MAKE) -f CMakeFiles/BulanciClient.dir/build.make CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.s
 .PHONY : Comunication/Socket/Socket.cpp.s
 
+Game/Map.o: Game/Map.cpp.o
+
+.PHONY : Game/Map.o
+
+# target to build an object file
+Game/Map.cpp.o:
+	$(MAKE) -f CMakeFiles/BulanciClient.dir/build.make CMakeFiles/BulanciClient.dir/Game/Map.cpp.o
+.PHONY : Game/Map.cpp.o
+
+Game/Map.i: Game/Map.cpp.i
+
+.PHONY : Game/Map.i
+
+# target to preprocess a source file
+Game/Map.cpp.i:
+	$(MAKE) -f CMakeFiles/BulanciClient.dir/build.make CMakeFiles/BulanciClient.dir/Game/Map.cpp.i
+.PHONY : Game/Map.cpp.i
+
+Game/Map.s: Game/Map.cpp.s
+
+.PHONY : Game/Map.s
+
+# target to generate assembly for a file
+Game/Map.cpp.s:
+	$(MAKE) -f CMakeFiles/BulanciClient.dir/build.make CMakeFiles/BulanciClient.dir/Game/Map.cpp.s
+.PHONY : Game/Map.cpp.s
+
+Game/Player.o: Game/Player.cpp.o
+
+.PHONY : Game/Player.o
+
+# target to build an object file
+Game/Player.cpp.o:
+	$(MAKE) -f CMakeFiles/BulanciClient.dir/build.make CMakeFiles/BulanciClient.dir/Game/Player.cpp.o
+.PHONY : Game/Player.cpp.o
+
+Game/Player.i: Game/Player.cpp.i
+
+.PHONY : Game/Player.i
+
+# target to preprocess a source file
+Game/Player.cpp.i:
+	$(MAKE) -f CMakeFiles/BulanciClient.dir/build.make CMakeFiles/BulanciClient.dir/Game/Player.cpp.i
+.PHONY : Game/Player.cpp.i
+
+Game/Player.s: Game/Player.cpp.s
+
+.PHONY : Game/Player.s
+
+# target to generate assembly for a file
+Game/Player.cpp.s:
+	$(MAKE) -f CMakeFiles/BulanciClient.dir/build.make CMakeFiles/BulanciClient.dir/Game/Player.cpp.s
+.PHONY : Game/Player.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -189,6 +243,12 @@ help:
 	@echo "... Comunication/Socket/Socket.o"
 	@echo "... Comunication/Socket/Socket.i"
 	@echo "... Comunication/Socket/Socket.s"
+	@echo "... Game/Map.o"
+	@echo "... Game/Map.i"
+	@echo "... Game/Map.s"
+	@echo "... Game/Player.o"
+	@echo "... Game/Player.i"
+	@echo "... Game/Player.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -5,6 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/natalia/CLionProjects/BulanciClient/Comunication/Socket/Socket.cpp" "/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o"
+  "/home/natalia/CLionProjects/BulanciClient/Game/Map.cpp" "/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/CMakeFiles/BulanciClient.dir/Game/Map.cpp.o"
+  "/home/natalia/CLionProjects/BulanciClient/Game/Player.cpp" "/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/CMakeFiles/BulanciClient.dir/Game/Player.cpp.o"
   "/home/natalia/CLionProjects/BulanciClient/main.cpp" "/home/natalia/CLionProjects/BulanciClient/cmake-build-debug/CMakeFiles/BulanciClient.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

@@ -9,6 +9,6 @@ find_package(SDL2_image REQUIRED)
 
 include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIR})
 
-add_executable(BulanciClient main.cpp Comunication/Socket/Socket.cpp Comunication/Socket/Socket.h)
+add_executable(BulanciClient main.cpp Comunication/Socket/Socket.cpp Comunication/Socket/Socket.h Game/Player.cpp Game/Player.h Game/Map.cpp Game/Map.h)
 
 target_link_libraries(BulanciClient ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})

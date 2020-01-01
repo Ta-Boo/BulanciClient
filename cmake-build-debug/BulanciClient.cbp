@@ -92,6 +92,18 @@
 		<Unit filename="/home/natalia/CLionProjects/BulanciClient/Comunication/Socket/Socket.h">
 			<Option target="BulanciClient"/>
 		</Unit>
+		<Unit filename="/home/natalia/CLionProjects/BulanciClient/Game/Map.cpp">
+			<Option target="BulanciClient"/>
+		</Unit>
+		<Unit filename="/home/natalia/CLionProjects/BulanciClient/Game/Map.h">
+			<Option target="BulanciClient"/>
+		</Unit>
+		<Unit filename="/home/natalia/CLionProjects/BulanciClient/Game/Player.cpp">
+			<Option target="BulanciClient"/>
+		</Unit>
+		<Unit filename="/home/natalia/CLionProjects/BulanciClient/Game/Player.h">
+			<Option target="BulanciClient"/>
+		</Unit>
 		<Unit filename="/home/natalia/CLionProjects/BulanciClient/main.cpp">
 			<Option target="BulanciClient"/>
 		</Unit>
