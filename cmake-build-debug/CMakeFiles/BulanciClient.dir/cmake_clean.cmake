@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "BulanciClient"
   "BulanciClient.pdb"
+  "CMakeFiles/BulanciClient.dir/Comunication/Message/Message.cpp.o"
   "CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o"
   "CMakeFiles/BulanciClient.dir/main.cpp.o"
 )

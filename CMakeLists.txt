@@ -7,8 +7,8 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 
-include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIR})
+include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIR} )
 
-add_executable(BulanciClient main.cpp Comunication/Socket/Socket.cpp Comunication/Socket/Socket.h)
+add_executable(BulanciClient main.cpp Comunication/Socket/Socket.cpp Comunication/Socket/Socket.h Comunication/Message/Message.cpp Comunication/Message/Message.h)
 
-target_link_libraries(BulanciClient ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
+target_link_libraries(BulanciClient ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} )

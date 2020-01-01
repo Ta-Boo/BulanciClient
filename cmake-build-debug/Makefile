@@ -123,6 +123,33 @@ BulanciClient/fast:
 	$(MAKE) -f CMakeFiles/BulanciClient.dir/build.make CMakeFiles/BulanciClient.dir/build
 .PHONY : BulanciClient/fast
 
+Comunication/Message/Message.o: Comunication/Message/Message.cpp.o
+
+.PHONY : Comunication/Message/Message.o
+
+# target to build an object file
+Comunication/Message/Message.cpp.o:
+	$(MAKE) -f CMakeFiles/BulanciClient.dir/build.make CMakeFiles/BulanciClient.dir/Comunication/Message/Message.cpp.o
+.PHONY : Comunication/Message/Message.cpp.o
+
+Comunication/Message/Message.i: Comunication/Message/Message.cpp.i
+
+.PHONY : Comunication/Message/Message.i
+
+# target to preprocess a source file
+Comunication/Message/Message.cpp.i:
+	$(MAKE) -f CMakeFiles/BulanciClient.dir/build.make CMakeFiles/BulanciClient.dir/Comunication/Message/Message.cpp.i
+.PHONY : Comunication/Message/Message.cpp.i
+
+Comunication/Message/Message.s: Comunication/Message/Message.cpp.s
+
+.PHONY : Comunication/Message/Message.s
+
+# target to generate assembly for a file
+Comunication/Message/Message.cpp.s:
+	$(MAKE) -f CMakeFiles/BulanciClient.dir/build.make CMakeFiles/BulanciClient.dir/Comunication/Message/Message.cpp.s
+.PHONY : Comunication/Message/Message.cpp.s
+
 Comunication/Socket/Socket.o: Comunication/Socket/Socket.cpp.o
 
 .PHONY : Comunication/Socket/Socket.o
@@ -186,6 +213,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... BulanciClient"
 	@echo "... edit_cache"
+	@echo "... Comunication/Message/Message.o"
+	@echo "... Comunication/Message/Message.i"
+	@echo "... Comunication/Message/Message.s"
 	@echo "... Comunication/Socket/Socket.o"
 	@echo "... Comunication/Socket/Socket.i"
 	@echo "... Comunication/Socket/Socket.s"

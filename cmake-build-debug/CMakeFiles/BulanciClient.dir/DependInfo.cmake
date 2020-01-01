@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/tobo/Desktop/Projects/BulanciClient/Comunication/Message/Message.cpp" "/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/CMakeFiles/BulanciClient.dir/Comunication/Message/Message.cpp.o"
   "/home/tobo/Desktop/Projects/BulanciClient/Comunication/Socket/Socket.cpp" "/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/CMakeFiles/BulanciClient.dir/Comunication/Socket/Socket.cpp.o"
   "/home/tobo/Desktop/Projects/BulanciClient/main.cpp" "/home/tobo/Desktop/Projects/BulanciClient/cmake-build-debug/CMakeFiles/BulanciClient.dir/main.cpp.o"
   )

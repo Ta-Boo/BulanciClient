@@ -86,6 +86,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/tobo/Desktop/Projects/BulanciClient/Comunication/Message/Message.cpp">
+			<Option target="BulanciClient"/>
+		</Unit>
+		<Unit filename="/home/tobo/Desktop/Projects/BulanciClient/Comunication/Message/Message.h">
+			<Option target="BulanciClient"/>
+		</Unit>
 		<Unit filename="/home/tobo/Desktop/Projects/BulanciClient/Comunication/Socket/Socket.cpp">
 			<Option target="BulanciClient"/>
 		</Unit>

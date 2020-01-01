@@ -2,7 +2,6 @@
 // Created by Hladek Tobias on 2019-12-27.
 //
 #include "Socket.h"
-
 Socket::Socket(){};
 
 int Socket::connectSocket(char *adress, int port) {
@@ -39,20 +38,24 @@ int Socket::connectSocket(char *adress, int port) {
     return 0;
 }
 
-char* Socket::activateSocket() {
-    for (int i = 0; i < 2; ++i) {
+char* Socket::sendMessage() {
         printf("Please enter a message: ");
         bzero(buffer,256);
         fgets(buffer, 255, stdin);
         write(sockfd, buffer, strlen(buffer));
-        bzero(buffer,256);
-        read(sockfd, buffer, 255);
-        printf("%s\n",buffer);
-    }
     return "";
 }
 
-char *Socket::onMessageRecieved() {
+char *Socket::listenForMessages() {
+    while(true) {
+//        this->sendMessage();
+        bzero(buffer,256);
+        read(sockfd, buffer, 255);
+        if (strcmp(buffer, "EXITS\n") == 0 ) {
+            break;
+        }
+        printf("%s\n",buffer);
+    }
     return nullptr;
 }
 

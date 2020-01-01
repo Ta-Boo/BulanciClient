@@ -23,11 +23,12 @@ private:
 
     char buffer[256];
 
+
 public:
     Socket();
     int connectSocket(char* adress, int port);
-    char* activateSocket();
-    char* onMessageRecieved();
+    char* sendMessage();
+    char* listenForMessages();
     ~Socket();
 
 };
