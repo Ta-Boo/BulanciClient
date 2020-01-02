@@ -1,9 +1,11 @@
 #include <SDL.h>
 #include <iosfwd>
 #include <sstream>
+#include <iostream>
 #include "SDL_image.h"
 #include "Comunication/Message/Message.h"
 #include "Comunication/Socket/Socket.h"
+#include "Game/Game.h"
 
 
 
@@ -49,12 +51,26 @@
 //    return 0;
 //}
 
+Game *game = nullptr;
+
 
 int main(int argc, char* argv[]) {
+    game = new Map;
+    game->init("tf", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600);
+    while (game->running()){
+        game->handleEvents();
+        game->update();
+        game->render();
+    }
+
+    game->clean();
+
     Socket socket = Socket();
     socket.connectSocket(argv[1],atoi(argv[2]));
 //    socket.sendMessage();
     socket.listenForMessages();
+
+
 
 
     return 0;
