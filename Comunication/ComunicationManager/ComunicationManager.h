@@ -22,10 +22,8 @@ private:
     int sockfd;
     struct sockaddr_in serv_addr;
     struct hostent* server;
-    char buffer[256];
 
     void listenForMessages();
-    bool activated = false;
     thread thrd;
     Message* actualMessage;
 
@@ -34,6 +32,7 @@ public:
     int connectSocket(char* adress, int port);
     void sendMessage(Message* message);
     void activateListening();
+    void waitForFinish() { thrd.join(); };
     ~ComunicationManager();
 
 };

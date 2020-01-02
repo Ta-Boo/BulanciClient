@@ -24,6 +24,9 @@ Message::~Message() {
 }
 
 char* Message::toString() {
+    if(exit){
+        return "EXIT";
+    }
     int counter =1;
     for (DataPlayer player : players) {
         string playerString = to_string(player.hp) + "|" + to_string(player.possX) +

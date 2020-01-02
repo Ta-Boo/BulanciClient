@@ -48,33 +48,34 @@ int ComunicationManager::connectSocket(char *adress, int port) {
 }
 
 void ComunicationManager::sendMessage(Message* message) {
+        usleep(800);
         printf("sending... \n");
 //        bzero(buffer,256);
-        fgets(buffer, 255, stdin);
-        char* sending = "prva";//message->toString();
-        write(sockfd, sending , strlen(sending));
-    printf("sent! prva \n");
+//        fgets(buffer, 255, stdin);
+//        char* sending = "prva";//message->toString();
+        write(sockfd, message->toString() , strlen(message->toString())+1);
+    printf("sent! \n");
 
 
 }
 
 void ComunicationManager::activateListening() {
     thrd = thread(&ComunicationManager::listenForMessages,this);
-//    thrd.join();
-    return;
 }
 
 
 
 //MARK: private
 void ComunicationManager::listenForMessages() {
-
+    char buffer[256];
     while(true) {
-//        this->sendMessage();
         bzero(buffer,256);
-        int n =read(sockfd, buffer, 255);
-        n;
-        if (strcmp(buffer, "EXITS\n") == 0 ) {
+        read(sockfd, buffer, 255);
+
+        if (strcmp(buffer, "FINISH") == 0 ) {
+            Message message;
+            message.exit = true;
+            sendMessage(&message);
             break;
         }
         printf("%s\n",buffer);
