@@ -8,6 +8,15 @@
 
 Message::Message() {
     actualMessage = new  string();
+    players[0].facing = TOP;
+    players[0].hp = 80;
+    players[0].possX = 400;
+    players[0].possY = 600;
+
+    players[1].facing = BOT;
+    players[1].hp = 30;
+    players[1].possX = 200;
+    players[1].possY = 900;
 }
 
 Message::~Message() {

@@ -1,10 +1,19 @@
 //
 // Created by Hladek Tobias on 2019-12-27.
 //
-#include "Socket.h"
-Socket::Socket(){};
+#include "ComunicationManager.h"
+ComunicationManager::ComunicationManager(){
+    actualMessage = new Message();
 
-int Socket::connectSocket(char *adress, int port) {
+};
+
+
+ComunicationManager::~ComunicationManager() {
+    close(sockfd);
+    delete actualMessage;
+}
+
+int ComunicationManager::connectSocket(char *adress, int port) {
 
     server = gethostbyname(adress);
     if (server == NULL)
@@ -34,34 +43,44 @@ int Socket::connectSocket(char *adress, int port) {
         perror("Error connecting to socket");
         return 4;
     }
-
+    printf("Conected to server\n");
     return 0;
 }
 
-char* Socket::sendMessage() {
-        printf("Please enter a message: ");
-        bzero(buffer,256);
+void ComunicationManager::sendMessage(Message* message) {
+        printf("sending... \n");
+//        bzero(buffer,256);
         fgets(buffer, 255, stdin);
-        write(sockfd, buffer, strlen(buffer));
-    return "";
+        char* sending = "prva";//message->toString();
+        write(sockfd, sending , strlen(sending));
+    printf("sent! prva \n");
+
+
 }
 
-char *Socket::listenForMessages() {
+void ComunicationManager::activateListening() {
+    thrd = thread(&ComunicationManager::listenForMessages,this);
+//    thrd.join();
+    return;
+}
+
+
+
+//MARK: private
+void ComunicationManager::listenForMessages() {
+
     while(true) {
 //        this->sendMessage();
         bzero(buffer,256);
-        read(sockfd, buffer, 255);
+        int n =read(sockfd, buffer, 255);
+        n;
         if (strcmp(buffer, "EXITS\n") == 0 ) {
             break;
         }
         printf("%s\n",buffer);
     }
-    return nullptr;
 }
 
-Socket::~Socket() {
-    close(sockfd);
-}
 
 
 
