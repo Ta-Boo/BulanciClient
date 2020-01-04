@@ -8,6 +8,13 @@
 #include "SDL_image.h"
 #include "Player.h"
 #include "Bullet.h"
+#include "../Comunication/Message/Message.h"
+#include "../Comunication/Message/Data/DataPlayer.h"
+
+#include <iostream>
+
+#define PLAYERS_COUNT 2
+//#include "../Comunication/Message/Message.h"
 
 class Player;
 
@@ -15,17 +22,24 @@ class Game {
 private:
 
     //Player *player1 = new Player(0,0);
-    Player *player;
+    //Player *player;
+    //Player *enemy;
+    Player *players[PLAYERS_COUNT];
+
     Bullet *bullet;
     bool leti = false;
     bool prvyRaz = true;
     SDL_Texture* background;
-    SDL_Texture* playerText;
+    SDL_Texture* playerText[PLAYERS_COUNT];
+    int naboje[PLAYERS_COUNT];
+    //SDL_Texture* enemyText;
 
-    SDL_Rect srcR, destR;
+    SDL_Rect srcR, naboj;
+    SDL_Rect playR[PLAYERS_COUNT];
+
     SDL_Point center;
     SDL_Point centerP;
-    SDL_Texture* bulletText = nullptr;
+    SDL_Texture* bulletText;
 
 
     bool isRunning;
@@ -43,6 +57,7 @@ public:
 
     void handleEvents();
     void update();
+    void updateFromMessage(Message message);
     void render();
     void clean();
 

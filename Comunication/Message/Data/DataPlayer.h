@@ -7,13 +7,11 @@
 
 enum Facing {TOP, RIGHT, BOT, LEFT};
 
-
-struct DataPlayer {
+typedef struct DataPlayer {
     int hp;
     int possX;
     int possY;
     Facing facing;
 
-};
-
+}MyDataPlayer;
 #endif //BULANCICLIENT_PLAYER_H

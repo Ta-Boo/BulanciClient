@@ -43,3 +43,11 @@ Bullet::~Bullet() {
 //    delete image;
 SDL_FreeSurface(image);
 }
+
+bool Bullet::isLeti() const {
+    return leti;
+}
+
+void Bullet::setLeti(bool leti) {
+    Bullet::leti = leti;
+}

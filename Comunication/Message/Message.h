@@ -16,7 +16,7 @@ class Message
 {
 public:
     string* actualMessage;
-    DataPlayer players[PLAYERS_COUNT]; //todo lepsie  budu  mozno smerniky
+    DataPlayer *players[PLAYERS_COUNT]; //todo lepsie  budu  mozno smerniky
     bool exit = false;
 public:
     Message();

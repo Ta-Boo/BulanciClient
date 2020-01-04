@@ -15,6 +15,7 @@ private:
     double surX = 0;
     double surY = 0;
     Facing facing;
+    bool leti = false;
 public:
     Bullet();
 
@@ -26,6 +27,9 @@ public:
     void setSurY(double surY);
     void update(double x, double y, Facing facing);
     SDL_Surface *getImage() const;
+    bool isLeti() const;
+    void setLeti(bool leti);
+
 
     Facing getFacing() const;
 };

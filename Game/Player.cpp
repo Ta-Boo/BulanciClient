@@ -10,6 +10,7 @@ Player::Player(double surX, double surY) : surX(surX), surY(surY) {
     this->hp = 0;
     this->facing = RIGHT;
     this->image = IMG_Load("hrac.png");
+    this->pocetNabojov = 5;
 }
 
 SDL_Surface *Player::getImage() const {
@@ -61,6 +62,16 @@ void Player::update(int x, int y,Facing facing) {
 
 Facing Player::getFacing() const {
     return facing;
+}
+
+void Player::vystrel() {
+    if(pocetNabojov > 0) {
+        pocetNabojov--;
+    }
+}
+
+int Player::getPocetNabojov() const {
+    return pocetNabojov;
 }
 
 

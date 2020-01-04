@@ -32,7 +32,8 @@ public:
     void setSurY(double surY);
     void setFacing(Facing facing);
     void update(int x, int y,Facing facing);
-
+    void vystrel();
+    int getPocetNabojov() const;
     Facing getFacing() const;
 };
 

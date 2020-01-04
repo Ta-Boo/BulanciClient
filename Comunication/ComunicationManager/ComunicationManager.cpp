@@ -2,6 +2,9 @@
 // Created by Hladek Tobias on 2019-12-27.
 //
 #include "ComunicationManager.h"
+#include "../Message/MessageFactory.h"
+#include "../../Game/Game.h"
+
 ComunicationManager::ComunicationManager(){
     actualMessage = new Message();
 
@@ -74,6 +77,10 @@ void ComunicationManager::listenForMessages() {
             sendMessage(&message);
             break;
         }
+        MessageFactory factory;
+        Game game;
+        Message recievedMessage = factory.createMessage(buffer);
+//        game.updateFromMessage(recievedMessage);
         printf("%s\n",buffer);
     }
 }
