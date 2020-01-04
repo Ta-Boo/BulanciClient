@@ -6,15 +6,10 @@
 #include "Game.h"
 using namespace std;
 
-SDL_Texture* background;
-SDL_Texture* playerText;
-SDL_Texture* bulletText;
-SDL_Rect srcR, destR;
-bool leti = false;
-bool prvyRaz = true;
+
+
 //Facing facingBullet;
-SDL_Point center;
-SDL_Point centerP;
+
 
 
 Game::Game() {
@@ -27,11 +22,12 @@ Game::Game() {
 
 Game::~Game() {
    delete player;
-   //delete background;
-   //delete renderer;
-
-    delete &centerP;
-    delete &center;
+   delete bullet;
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
+//    SDL_FreeSurface(background);
+    SDL_Quit;
+    cout << "Game cleaned" << endl;
 }
 
 void Game::init(const char *title, int poX, int poY, int width, int height) {
@@ -47,7 +43,7 @@ void Game::init(const char *title, int poX, int poY, int width, int height) {
 
         renderer = SDL_CreateRenderer(window, -1, 0);
         if(renderer){
-            SDL_Surface* sur = IMG_Load("/home/natalia/CLionProjects/BulanciClient/pozadie.jpeg");
+            SDL_Surface* sur = IMG_Load("pozadie.jpeg");
             background = SDL_CreateTextureFromSurface(renderer, sur);
             SDL_FreeSurface(sur);
             //SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
@@ -133,14 +129,14 @@ void Game::update() {
     //srcR.x = player->getSurX() + 40;
     //srcR.y = player->getSurX() + 40;
 
-    if(leti == true && prvyRaz == true) {
+    if(leti && prvyRaz) {
         prvyRaz = false;
 
-        SDL_Surface* bullet = IMG_Load("/home/natalia/CLionProjects/BulanciClient/bullet.png");
+        SDL_Surface* bullet = IMG_Load("bullet.png");
         bulletText = SDL_CreateTextureFromSurface(renderer, bullet);
         SDL_FreeSurface(bullet);
 
-    } else if (leti == true && prvyRaz == false){
+    } else if (leti && !prvyRaz){
         this->smerGulky();
         //prvyRaz = false;
         if(srcR.x >= 800 || srcR.y >= 600) {
@@ -183,24 +179,23 @@ void Game::render() {
     } else {
         SDL_RenderCopyEx(renderer, playerText, NULL, &destR, 90, &centerP, SDL_FLIP_NONE);
     }
-    if(bullet->getFacing() == TOP) {
-        SDL_RenderCopyEx(renderer, bulletText, NULL, &srcR, 270, &center, SDL_FLIP_NONE);
-    } else if(bullet->getFacing() == RIGHT) {
-        SDL_RenderCopyEx(renderer, bulletText, NULL, &srcR, 0, &center, SDL_FLIP_NONE);
-    } else if(bullet->getFacing() == LEFT) {
-        SDL_RenderCopyEx(renderer, bulletText, NULL, &srcR, 180, &center, SDL_FLIP_NONE);
-    } else {
-        SDL_RenderCopyEx(renderer, bulletText, NULL, &srcR, 90, &center, SDL_FLIP_NONE);
+    if (bulletText) {
+        if(bullet->getFacing() == TOP) {
+            SDL_RenderCopyEx(renderer, bulletText, NULL, &srcR, 270, &center, SDL_FLIP_NONE);
+        } else if(bullet->getFacing() == RIGHT) {
+            SDL_RenderCopyEx(renderer, bulletText, NULL, &srcR, 0, &center, SDL_FLIP_NONE);
+        } else if(bullet->getFacing() == LEFT) {
+            SDL_RenderCopyEx(renderer, bulletText, NULL, &srcR, 180, &center, SDL_FLIP_NONE);
+        } else {
+            SDL_RenderCopyEx(renderer, bulletText, NULL, &srcR, 90, &center, SDL_FLIP_NONE);
+        }
     }
     SDL_RenderPresent(renderer);
 
 }
 
 void Game::clean() {
-    SDL_DestroyWindow(window);
-    SDL_DestroyRenderer(renderer);
-    SDL_Quit;
-    cout << "Game cleaned" << endl;
+
 }
 
 bool Game::running() {

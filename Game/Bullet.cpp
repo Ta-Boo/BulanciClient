@@ -5,7 +5,7 @@
 #include "Bullet.h"
 
 Bullet::Bullet() {
-    this->image = IMG_Load("/home/natalia/CLionProjects/BulanciClient/bullet.png");
+    this->image = IMG_Load("bullet.png");
     this->facing = RIGHT;
 }
 
@@ -40,5 +40,6 @@ void Bullet::update(double x, double y, Facing facing) {
 }
 
 Bullet::~Bullet() {
-    delete image;
+//    delete image;
+SDL_FreeSurface(image);
 }

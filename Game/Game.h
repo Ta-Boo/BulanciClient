@@ -17,6 +17,16 @@ private:
     //Player *player1 = new Player(0,0);
     Player *player;
     Bullet *bullet;
+    bool leti = false;
+    bool prvyRaz = true;
+    SDL_Texture* background;
+    SDL_Texture* playerText;
+
+    SDL_Rect srcR, destR;
+    SDL_Point center;
+    SDL_Point centerP;
+    SDL_Texture* bulletText = nullptr;
+
 
     bool isRunning;
     SDL_Window *window;

@@ -9,7 +9,7 @@ Player::Player(double surX, double surY) : surX(surX), surY(surY) {
 //Player::Player() {
     this->hp = 0;
     this->facing = RIGHT;
-    this->image = IMG_Load("/home/natalia/CLionProjects/BulanciClient/hrac.png");
+    this->image = IMG_Load("hrac.png");
 }
 
 SDL_Surface *Player::getImage() const {
@@ -37,7 +37,6 @@ void Player::setSurY(double surY) {
 }
 
 Player::~Player() {
-    delete image;
 }
 
 void Player::update(int x, int y,Facing facing) {

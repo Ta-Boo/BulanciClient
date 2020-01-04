@@ -49,9 +49,6 @@ int ComunicationManager::connectSocket(char *adress, int port) {
 
 void ComunicationManager::sendMessage(Message* message) {
         printf("sending... \n");
-//        bzero(buffer,256);
-//        fgets(buffer, 255, stdin);
-//        char* sending = "prva";//message->toString();
         write(sockfd, message->toString() , strlen(message->toString())+1);
     printf("sent! \n");
 
