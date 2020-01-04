@@ -40,11 +40,11 @@ MessageFactory::~MessageFactory() {
                 facing = TOP;
                 break;
         }
-        message.players[i]->facing = facing;
+        message.players[i].facing = facing;
         parts.pop_back();
-        message.players[i]->possY = stoi(parts[parts.size()-1]); parts.pop_back();
-        message.players[i]->possX = stoi(parts[parts.size()-1]); parts.pop_back();
-        message.players[i]->hp = stoi(parts[parts.size()-1]); parts.pop_back();
+        message.players[i].possY = stoi(parts[parts.size()-1]); parts.pop_back();
+        message.players[i].possX = stoi(parts[parts.size()-1]); parts.pop_back();
+        message.players[i].hp = stoi(parts[parts.size()-1]); parts.pop_back();
 
 
     }

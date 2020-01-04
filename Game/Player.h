@@ -8,8 +8,9 @@
 
 #include <SDL_surface.h>
 #include <SDL_image.h>
+#include "../Comunication/Message/Data/DataPlayer.h"
 
-enum Facing {TOP, RIGHT, BOT, LEFT};
+//enum Facing {TOP, RIGHT, BOT, LEFT};
 
 class Player {
 private:
@@ -26,9 +27,9 @@ public:
     virtual ~Player();
     SDL_Surface *getImage() const;
     void setImage(SDL_Surface *image);
-    double getSurX() const;
+    int getSurX() const;
     void setSurX(double surX);
-    double getSurY() const;
+    int getSurY() const;
     void setSurY(double surY);
     void setFacing(Facing facing);
     void update(int x, int y,Facing facing);

@@ -20,7 +20,7 @@ class Player;
 
 class Game {
 private:
-
+    DataPlayer player;
     //Player *player1 = new Player(0,0);
     //Player *player;
     //Player *enemy;
@@ -51,7 +51,7 @@ private:
 
 public:
     Game();
-    virtual ~Game();
+    ~Game();
 
     void init(const char* title, int poX, int poY, int width, int height);
 
@@ -59,7 +59,6 @@ public:
     void update();
     void updateFromMessage(Message message);
     void render();
-    void clean();
 
     bool running();
 

@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <thread>
 #include "../Message/Message.h"
+#include "../../Game/Game.h"
 
 using namespace std;
 class ComunicationManager {
@@ -23,7 +24,7 @@ private:
     struct sockaddr_in serv_addr;
     struct hostent* server;
 
-    void listenForMessages();
+    void listenForMessages(Game* game);
     thread thrd;
     Message* actualMessage;
 
@@ -31,7 +32,7 @@ public:
     ComunicationManager();
     int connectSocket(char* adress, int port);
     void sendMessage(Message* message);
-    void activateListening();
+    void activateListening(Game* game);
     void waitForFinish() { thrd.join(); };
     ~ComunicationManager();
 

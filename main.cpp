@@ -5,21 +5,18 @@
 #include "Comunication/ComunicationManager/ComunicationManager.h"
 
 int main(int argc, char* argv[]) {
+    ComunicationManager comunicationManager;
+//    comunicationManager.connectSocket(argv[1],atoi(argv[2]));
     Game game;
+//    comunicationManager.activateListening(&game);
+
+
     game.init("tf", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600);
     while (game.running()){
         game.handleEvents();
         game.update();
         game.render();
     }
-    game.clean();
-
-//    ComunicationManager manager;
-//    manager.connectSocket(argv[1],atoi(argv[2]));
-//    Message mess;
-//    manager.activateListening();
-
-
-    //delete game;
+//    comunicationManager.waitForFinish();
     return 0;
 }

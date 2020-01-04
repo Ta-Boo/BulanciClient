@@ -1,17 +1,18 @@
 //
-// Created by tobo on 1/1/20.
+// Created by tobo on 1/4/20.
 //
 
-#ifndef BULANCICLIENT_PLAYER_H
-#define BULANCICLIENT_PLAYER_H
-
+#ifndef BULANCICLIENT_DATAPLAYER_H
+#define BULANCICLIENT_DATAPLAYER_H
 enum Facing {TOP, RIGHT, BOT, LEFT};
 
-typedef struct DataPlayer {
+class DataPlayer {
+public:
     int hp;
     int possX;
     int possY;
     Facing facing;
+};
 
-}MyDataPlayer;
-#endif //BULANCICLIENT_PLAYER_H
+
+#endif //BULANCICLIENT_DATAPLAYER_H

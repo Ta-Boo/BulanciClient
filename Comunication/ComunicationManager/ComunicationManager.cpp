@@ -58,14 +58,14 @@ void ComunicationManager::sendMessage(Message* message) {
 
 }
 
-void ComunicationManager::activateListening() {
-    thrd = thread(&ComunicationManager::listenForMessages,this);
+void ComunicationManager::activateListening(Game* game) {
+    thrd = thread(&ComunicationManager::listenForMessages,this, game);
 }
 
 
 
 //MARK: private
-void ComunicationManager::listenForMessages() {
+void ComunicationManager::listenForMessages(Game* game) {
     char buffer[256];
     while(true) {
         bzero(buffer,256);
@@ -78,9 +78,8 @@ void ComunicationManager::listenForMessages() {
             break;
         }
         MessageFactory factory;
-        Game game;
-        Message recievedMessage = factory.createMessage(buffer);
-//        game.updateFromMessage(recievedMessage);
+
+        game->updateFromMessage(MessageFactory::createMessage(buffer));
         printf("%s\n",buffer);
     }
 }
