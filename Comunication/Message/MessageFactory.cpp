@@ -12,7 +12,7 @@ MessageFactory::~MessageFactory() {
 
 }
 
-Message MessageFactory::createMessage(char *input) {
+ Message MessageFactory::createMessage(char *input) {
     //todo Hp:80|posX:600|posY:800|facing:0
     std::vector<string> players;
     std::vector<string> parts;

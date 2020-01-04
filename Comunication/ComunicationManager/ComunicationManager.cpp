@@ -48,7 +48,6 @@ int ComunicationManager::connectSocket(char *adress, int port) {
 }
 
 void ComunicationManager::sendMessage(Message* message) {
-        usleep(800);
         printf("sending... \n");
 //        bzero(buffer,256);
 //        fgets(buffer, 255, stdin);
