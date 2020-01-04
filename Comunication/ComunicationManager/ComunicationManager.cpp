@@ -2,6 +2,8 @@
 // Created by Hladek Tobias on 2019-12-27.
 //
 #include "ComunicationManager.h"
+#include "../Message/MessageFactory.h"
+
 ComunicationManager::ComunicationManager(){
     actualMessage = new Message();
 
@@ -72,11 +74,17 @@ void ComunicationManager::listenForMessages() {
     while(true) {
 //        this->sendMessage();
         bzero(buffer,256);
-        int n =read(sockfd, buffer, 255);
-        n;
+        read(sockfd, buffer, 255);
         if (strcmp(buffer, "EXITS\n") == 0 ) {
             break;
         }
+        /*Game game;
+        MessageFactory factory;
+
+        Message message = factory.createMessage(buffer);
+        game.update(message);
+
+        game.update()*/
         printf("%s\n",buffer);
     }
 }

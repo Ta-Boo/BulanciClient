@@ -14,7 +14,7 @@ class MessageFactory {
 public:
     MessageFactory();
     ~MessageFactory();
-    Message createMessage(char* input);
+   static Message createMessage(char* input);
 
 };
 

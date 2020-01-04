@@ -6,20 +6,24 @@
 #define BULANCICLIENT_MAP_H
 
 #include "SDL_image.h"
-
 #include "Player.h"
+#include "Bullet.h"
 
-
+class Player;
 
 class Game {
 private:
-    Player *player1;
-    Player *player2;
+
+    //Player *player1 = new Player(0,0);
+    Player *player;
+    Bullet *bullet;
 
     bool isRunning;
     SDL_Window *window;
     SDL_Renderer *renderer;
     int cnt = 0;
+
+    void smerGulky();
 
 public:
     Game();

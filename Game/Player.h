@@ -9,27 +9,31 @@
 #include <SDL_surface.h>
 #include <SDL_image.h>
 
+enum Facing {TOP, RIGHT, BOT, LEFT};
+
 class Player {
 private:
+    int hp;
     SDL_Surface * image;
-    double surX;
-    double surY;
+    double surX = 0;
+    double surY = 0;
+    int pocetNabojov;
+    Facing facing;
 public:
     Player(double surX, double surY);
+    //Player();
 
     virtual ~Player();
-
     SDL_Surface *getImage() const;
-
     void setImage(SDL_Surface *image);
-
     double getSurX() const;
-
     void setSurX(double surX);
-
     double getSurY() const;
-
     void setSurY(double surY);
+    void setFacing(Facing facing);
+    void update(int x, int y,Facing facing);
+
+    Facing getFacing() const;
 };
 
 
