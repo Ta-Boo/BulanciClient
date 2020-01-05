@@ -25,21 +25,23 @@ private:
     //Player *player;
     //Player *enemy;
     Player *players[PLAYERS_COUNT];
+    int pocitadlo = 0;
 
     Bullet *bullet;
     bool leti = false;
     bool prvyRaz = true;
     SDL_Texture* background;
+    SDL_Texture* prekazka;
     SDL_Texture* playerText[PLAYERS_COUNT];
     int naboje[PLAYERS_COUNT];
     //SDL_Texture* enemyText;
 
-    SDL_Rect srcR, naboj;
+    SDL_Rect srcR, naboj, prekR;
     SDL_Rect playR[PLAYERS_COUNT];
 
     SDL_Point center;
     SDL_Point centerP;
-    SDL_Texture* bulletText;
+    SDL_Texture* bulletText = nullptr;
 
 
     bool isRunning;
@@ -48,6 +50,7 @@ private:
     int cnt = 0;
 
     void smerGulky();
+    void kontrolaGulky();
 
 public:
     Game();

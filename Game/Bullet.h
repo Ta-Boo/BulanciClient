@@ -19,7 +19,7 @@ private:
 public:
     Bullet();
 
-    virtual ~Bullet();
+    ~Bullet();
 
     double getSurX() const;
     void setSurX(double surX);

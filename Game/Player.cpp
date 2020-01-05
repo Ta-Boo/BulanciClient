@@ -7,7 +7,7 @@
 
 Player::Player(double surX, double surY) : surX(surX), surY(surY) {
 //Player::Player() {
-    this->hp = 0;
+    this->hp = 100;
     this->facing = RIGHT;
     this->image = IMG_Load("hrac.png");
     this->pocetNabojov = 5;
@@ -58,6 +58,22 @@ void Player::vystrel() {
 
 int Player::getPocetNabojov() const {
     return pocetNabojov;
+}
+
+void Player::naplnZbran() {
+    this->pocetNabojov = 5;
+}
+
+void Player::setHp(int hp) {
+    Player::hp = hp;
+}
+
+void Player::zasah() {
+    this->hp -= 10;
+}
+
+int Player::getHp() const {
+    return hp;
 }
 
 

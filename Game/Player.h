@@ -24,7 +24,7 @@ public:
     Player(double surX, double surY);
     //Player();
 
-    virtual ~Player();
+    ~Player();
     SDL_Surface *getImage() const;
     void setImage(SDL_Surface *image);
     int getSurX() const;
@@ -32,8 +32,12 @@ public:
     int getSurY() const;
     void setSurY(double surY);
     void setFacing(Facing facing);
+    void zasah();
+    int getHp() const;
+    void setHp(int hp);
     void update(int x, int y,Facing facing);
     void vystrel();
+    void naplnZbran();
     int getPocetNabojov() const;
     Facing getFacing() const;
 };

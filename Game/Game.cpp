@@ -21,11 +21,10 @@ Game::~Game() {
     for(int i = 0; i < PLAYERS_COUNT; i++) {
         delete players[i];
     }
-   delete bullet;
+    delete bullet;
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit;
-    cout << "Game cleaned" << endl;
 }
 
 void Game::init(const char *title, int poX, int poY, int width, int height) {
@@ -44,6 +43,14 @@ void Game::init(const char *title, int poX, int poY, int width, int height) {
             SDL_Surface* sur = IMG_Load("pozadie.jpeg");
             background = SDL_CreateTextureFromSurface(renderer, sur);
             SDL_FreeSurface(sur);
+
+            SDL_Surface* prek = IMG_Load("prekazka.png");
+            prekazka = SDL_CreateTextureFromSurface(renderer, prek);
+            SDL_FreeSurface(prek);
+            prekR.w = 200;
+            prekR.h = 200;
+            prekR.x = 400 - 100;
+            prekR.y = 300 - 100;
             cout << "Renderer created" << endl;
         }
 
@@ -99,7 +106,7 @@ void Game::handleEvents() {
         if (keys[SDL_SCANCODE_D]) {
             players[0]->update(3, 0, RIGHT);
         }
-        if (keys[SDL_SCANCODE_SPACE]) {
+        if (keys[SDL_SCANCODE_SPACE] && !bullet->isLeti()) {
             if(players[0]->getPocetNabojov() > 0) {
                     if(!bullet->isLeti()) {
                         bullet->update(0,0,players[0]->getFacing());
@@ -129,10 +136,17 @@ void Game::handleEvents() {
 }
 
 void Game::update() {
-    if(players[0]->getPocetNabojov() == 0) {
-
+    if(players[0]->getHp() == 0)
+    {
+        //todo ukoncenie hry
     }
-    cnt++;
+    if(players[0]->getPocetNabojov() == 0) {
+        if (pocitadlo == 4000) {
+            players[0]->naplnZbran();
+            pocitadlo = 0;
+        }
+        pocitadlo++;
+    }
 
     playR[0].x = players[0]->getSurX();
     playR[0].y = players[0]->getSurY();
@@ -143,9 +157,8 @@ void Game::update() {
 
     } else if (bullet->isLeti() && !prvyRaz){
         this->smerGulky();
-        if(srcR.x >= 800 || srcR.y >= 600 || srcR.x < 0-srcR.w || srcR.y < 0-srcR.h) {
-            bullet->setLeti(false);
-        }
+        kontrolaGulky();
+
     }
 
     if ( playR[0].x < 0 ) {
@@ -161,12 +174,17 @@ void Game::update() {
         playR[0].y = 600-playR[0].h;
     }
 
-
+    Message messa = Message();
+    messa.players[0].hp = players[0]->getHp();
+    messa.players[0].possX = players[0]->getSurX();
+    messa.players[0].possY = players[0]->getSurY();
+    messa.players[0].facing = players[0]->getFacing();
 }
 
 void Game::render() {
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, background, nullptr, nullptr);
+    SDL_RenderCopy(renderer, prekazka, nullptr, &prekR);
 
 
     for(int i = 0; i < PLAYERS_COUNT; i++) {
@@ -193,7 +211,7 @@ void Game::render() {
         }
     }
 
-    if (bulletText) {
+    if (bulletText != nullptr) {
         if(bullet->getFacing() == TOP) {
             SDL_RenderCopyEx(renderer, bulletText, nullptr, &srcR, 270, &center, SDL_FLIP_NONE);
         } else if(bullet->getFacing() == RIGHT) {
@@ -233,8 +251,29 @@ void Game::smerGulky() {
     }
 }
 void Game::updateFromMessage(Message message) {
-//    DataPlayer mess;
 
+    players[1]->update(message.players[1].possX, message.players[1].possY,message.players[1].facing);
+    players[1]->setHp(message.players[1].hp);
+}
+
+void Game::kontrolaGulky() {
+    if(srcR.x >= 800 || srcR.y >= 600 || srcR.x < 0-srcR.w || srcR.y < 0-srcR.h) {
+        bullet->setLeti(false);
+    }
+    if(srcR.x >= prekR.x +5 && srcR.y >= prekR.y + 5 && srcR.x <= prekR.w + prekR.x - 5 && srcR.y <= prekR.h + prekR.y - 5) {
+        bullet->setLeti(false);
+        srcR.x = 800;
+        srcR.y = 800;
+    }
+    if(bullet->getSurX() >= players[1]->getSurX() && bullet->getSurX() <= players[1]->getSurX() + playR[1].w) {
+        //bullet->setLeti(false);
+        if(bullet->getSurY() >= players[1]->getSurY() && bullet->getSurY() <= players[1]->getSurY() + playR[1].h) {
+                bullet->setLeti(false);
+                srcR.x = 800;
+                srcR.y = 800;
+                players[1]->zasah();
+        }
+    }
 
 }
 
