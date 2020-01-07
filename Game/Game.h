@@ -10,12 +10,12 @@
 #include "Bullet.h"
 #include "../Comunication/Message/Message.h"
 #include "../Comunication/Message/Data/DataPlayer.h"
+#include "../Comunication/ComunicationManager/ComunicationManager.h"
 
 #include <iostream>
 #include <thread>
 
 #define PLAYERS_COUNT 2
-class ComunicationManager;
 
 class Player;
 
@@ -41,9 +41,7 @@ private:
     Player *players[PLAYERS_COUNT];
     Bullet *bullet[PLAYERS_COUNT];
 
-    int     pocitadlo = 0;
-    bool reloading = false;
-    bool    leti = false;
+    bool    reloading = false;
     bool    prvyRaz[PLAYERS_COUNT];
     int     naboje[PLAYERS_COUNT];
 
@@ -55,6 +53,7 @@ private:
 
     thread reloadingThread;
     void reload();
+    Message* actualMessage;
     thread sendingThread;
     bool sendStatus(Message* message);
 public:

@@ -42,11 +42,9 @@ MessageFactory::~MessageFactory() {
         }
         message.players[i].facing = facing;
         parts.pop_back();
-        message.players[i].possY = stoi(parts[parts.size()-1]); parts.pop_back();
-        message.players[i].possX = stoi(parts[parts.size()-1]); parts.pop_back();
+        message.players[i].pY = stoi(parts[parts.size() - 1]); parts.pop_back();
+        message.players[i].pX = stoi(parts[parts.size() - 1]); parts.pop_back();
         message.players[i].hp = stoi(parts[parts.size()-1]); parts.pop_back();
-
-
     }
     return message;
 }

@@ -8,11 +8,17 @@ enum Facing {TOP, RIGHT, BOT, LEFT};
 
 class DataPlayer {
 public:
+    int id;
     int hp;
-    int possX;
-    int possY;
+    int pX;
+    int pY;
     Facing facing;
-    bool vystrelil;
+
+    int bulletFacing;
+    int bulletX;
+    int bulletY;
+
+    bool exit = false;
 };
 
 

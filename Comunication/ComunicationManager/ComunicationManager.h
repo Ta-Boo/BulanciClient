@@ -15,7 +15,10 @@
 #include <unistd.h>
 #include <thread>
 #include "../Message/Message.h"
-#include "../../Game/Game.h"
+#include "../Message/MessageFactory.h"
+
+
+class Game;
 
 using namespace std;
 class ComunicationManager {
@@ -24,9 +27,10 @@ private:
     struct sockaddr_in serv_addr;
     struct hostent* server;
 
-    void listenForMessages(Game* game);
+//    void listenForMessages(Game* game);
     thread thrd;
     Message* actualMessage;
+
 
 public:
     ComunicationManager();
@@ -35,8 +39,9 @@ public:
     void activateListening(Game* game);
     void waitForFinish() { thrd.join(); };
     ~ComunicationManager();
-
+    void listenForMessages(Game *game);
 };
+
 
 
 #endif //BULANCICLIENT_COMUNICATIONMANAGER_H

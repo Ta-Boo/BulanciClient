@@ -2,8 +2,9 @@
 // Created by Hladek Tobias on 2019-12-27.
 //
 #include "ComunicationManager.h"
-#include "../Message/MessageFactory.h"
 #include "../../Game/Game.h"
+
+
 
 ComunicationManager::ComunicationManager(){
     actualMessage = new Message();
