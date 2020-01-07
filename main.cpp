@@ -8,6 +8,7 @@ int main(int argc, char* argv[]) {
     ComunicationManager comunicationManager;
 //    comunicationManager.connectSocket(argv[1],atoi(argv[2]));
     Game game;
+    game._comunicationManager = &comunicationManager;
 //    comunicationManager.activateListening(&game);
 
 

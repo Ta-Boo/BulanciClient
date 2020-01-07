@@ -1,9 +1,9 @@
 //
 // Created by natalia on 1. 1. 2020.
 //
+#include <zconf.h>
 #include "Game.h"
 #include "../Comunication/Message/Data/DataPlayer.h"
-
 using namespace std;
 
 
@@ -168,15 +168,22 @@ void Game::handleEvents() {
         }
     }
 }
+void Game::reload() {
+
+    sleep(4);
+    players[0]->naplnZbran();
+    reloading = false;
+    reloadingThread.detach();
+}
 
 void Game::update() {
     for(int i = 0; i < PLAYERS_COUNT; i++) {
-        if(players[i]->getPocetNabojov() == 0) {
-            if (pocitadlo == 4000) {
-                players[i]->naplnZbran();
-                pocitadlo = 0;
+        if(players[0]->getPocetNabojov() == 0) {
+            if (!reloading) {
+                reloading = true;
+                reloadingThread = thread(&Game::reload, this);
             }
-            pocitadlo++;
+
         }
         playR[i].x = players[i]->getSurX();
         playR[i].y = players[i]->getSurY();
@@ -294,7 +301,7 @@ void Game::smerGulky(int i) {
 void Game::updateFromMessage(Message message) {
 
     players[1]->update(message.players[1].possX, message.players[1].possY,message.players[1].facing);
-    players[0]->setHp(message.players[1].hp);
+//    players[0]->setHp(message.players[1].hp);
 
     if(message.players[1].vystrelil) {
         bullet[1]->update(0,0,players[0]->getFacing());
@@ -327,8 +334,6 @@ void Game::updateFromMessage(Message message) {
         this->smerGulky(1);
         kontrolaGulky();
     }
-
-
 }
 
 void Game::kontrolaGulky() {
@@ -359,6 +364,11 @@ int Game::opacne(int i) {
     } else {
         return 0;
     }
+}
+
+bool Game::sendStatus(Message* message) {
+    _comunicationManager->sendMessage(message);
+    return true;
 }
 
 

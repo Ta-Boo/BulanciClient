@@ -12,9 +12,10 @@
 #include "../Comunication/Message/Data/DataPlayer.h"
 
 #include <iostream>
+#include <thread>
 
 #define PLAYERS_COUNT 2
-//#include "../Comunication/Message/Message.h"
+class ComunicationManager;
 
 class Player;
 
@@ -40,10 +41,11 @@ private:
     Player *players[PLAYERS_COUNT];
     Bullet *bullet[PLAYERS_COUNT];
 
-    int pocitadlo = 0;
-    bool leti = false;
-    bool prvyRaz[PLAYERS_COUNT];
-    int naboje[PLAYERS_COUNT];
+    int     pocitadlo = 0;
+    bool reloading = false;
+    bool    leti = false;
+    bool    prvyRaz[PLAYERS_COUNT];
+    int     naboje[PLAYERS_COUNT];
 
     bool isRunning;
 
@@ -51,15 +53,21 @@ private:
     void kontrolaGulky();
     int opacne(int i);
 
+    thread reloadingThread;
+    void reload();
+    thread sendingThread;
+    bool sendStatus(Message* message);
 public:
+    ComunicationManager* _comunicationManager;
+
     Game();
+
     ~Game();
-
     void init(const char* title, int poX, int poY, int width, int height);
-
     void handleEvents();
     void update();
     void updateFromMessage(Message message);
+
     void render();
 
     bool running();
