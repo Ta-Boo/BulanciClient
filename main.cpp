@@ -1,6 +1,5 @@
 #include <SDL.h>
 
-#include "Comunication/Message/Message.h"
 #include "Game/Game.h"
 #include "Comunication/ComunicationManager/ComunicationManager.h"
 
@@ -8,7 +7,7 @@ int main(int argc, char* argv[]) {
     ComunicationManager comunicationManager;
 //    comunicationManager.connectSocket(argv[1],atoi(argv[2]));
     Game game;
-    game._comunicationManager = &comunicationManager;
+//    game._comunicationManager = &comunicationManager;
 //    comunicationManager.activateListening(&game);
 
 

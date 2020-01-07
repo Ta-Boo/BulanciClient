@@ -14,8 +14,7 @@
 #include <cstring>
 #include <unistd.h>
 #include <thread>
-#include "../Message/Message.h"
-#include "../Message/MessageFactory.h"
+#include "../Message/PlayerFactory.h"
 
 
 class Game;
@@ -29,13 +28,12 @@ private:
 
 //    void listenForMessages(Game* game);
     thread thrd;
-    Message* actualMessage;
 
 
 public:
     ComunicationManager();
     int connectSocket(char* adress, int port);
-    void sendMessage(Message* message);
+    void sendMessage(PlayerData message);
     void activateListening(Game* game);
     void waitForFinish() { thrd.join(); };
     ~ComunicationManager();

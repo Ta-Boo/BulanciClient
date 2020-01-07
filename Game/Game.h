@@ -8,8 +8,6 @@
 #include "SDL_image.h"
 #include "Player.h"
 #include "Bullet.h"
-#include "../Comunication/Message/Message.h"
-#include "../Comunication/Message/Data/DataPlayer.h"
 #include "../Comunication/ComunicationManager/ComunicationManager.h"
 
 #include <iostream>
@@ -37,9 +35,9 @@ private:
     SDL_Point center;
     SDL_Point centerP;
 
-    DataPlayer player;
     Player *players[PLAYERS_COUNT];
-    Bullet *bullet[PLAYERS_COUNT];
+    Bullet *bullets[PLAYERS_COUNT];
+    int exit = 0;
 
     bool    reloading = false;
     bool    prvyRaz[PLAYERS_COUNT];
@@ -49,13 +47,12 @@ private:
 
     void smerGulky(int i);
     void kontrolaGulky();
-    int opacne(int i);
 
     thread reloadingThread;
     void reload();
-    Message* actualMessage;
     thread sendingThread;
-    bool sendStatus(Message* message);
+    PlayerData getActualMessage();
+    bool sendStatus();
 public:
     ComunicationManager* _comunicationManager;
 
@@ -65,10 +62,9 @@ public:
     void init(const char* title, int poX, int poY, int width, int height);
     void handleEvents();
     void update();
-    void updateFromMessage(Message message);
+    void updateFromMessage(PlayerData message);
 
     void render();
-
     bool running();
 
 };

@@ -3,7 +3,6 @@
 //
 #include <zconf.h>
 #include "Game.h"
-#include "../Comunication/Message/Data/DataPlayer.h"
 using namespace std;
 
 
@@ -14,20 +13,19 @@ Game::Game() {
     players[1] = new Player(740, 300);
     players[1]->update(0,0,LEFT);
 
-    bullet[0] = new Bullet();
-    bullet[1] = new Bullet();
-    actualMessage = new Message();
-    sendingThread = thread(&Game::sendStatus, this, actualMessage);
+    bullets[0] = new Bullet();
+    bullets[1] = new Bullet();
+//    sendingThread = thread(&Game::sendStatus, this, actualMessage);
 }
 
 Game::~Game() {
     for(int i = 0; i < PLAYERS_COUNT; i++) {
         delete players[i];
-        delete bullet[i];
+        delete bullets[i];
         SDL_DestroyTexture(playerText[i]);
         SDL_DestroyTexture(bulletText[i]);
     }
-    //delete bullet;
+    //delete bullets;
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyTexture(background);
@@ -36,7 +34,6 @@ Game::~Game() {
     for(int i = 0; i < 2; i++) {
         SDL_DestroyTexture(koniecText[i]);
     }
-    delete actualMessage;
     SDL_Quit();
 }
 
@@ -83,7 +80,7 @@ void Game::init(const char *title, int poX, int poY, int width, int height) {
         playR[i].y = players[i]->getSurY();
         naboje[i] = players[i]->getPocetNabojov();
 
-        SDL_Surface* bulletSur = bullet[i]->getImage();//IMG_Load("bullet.png");
+        SDL_Surface* bulletSur = bullets[i]->getImage();//IMG_Load("bullets.png");
         bulletText[i] = SDL_CreateTextureFromSurface(renderer, bulletSur);
         SDL_FreeSurface(bulletSur);
 
@@ -143,11 +140,11 @@ void Game::handleEvents() {
         if (keys[SDL_SCANCODE_D]) {
             players[0]->update(3, 0, RIGHT);
         }
-        if (keys[SDL_SCANCODE_SPACE] && !bullet[0]->isLeti()) {
+        if (keys[SDL_SCANCODE_SPACE] && !bullets[0]->isLeti()) {
             if(players[0]->getPocetNabojov() > 0) {
-                if(!bullet[0]->isLeti()) {
-                    bullet[0]->update(0,0,players[0]->getFacing());
-                    bullet[0]->setLeti(true);
+                if(!bullets[0]->isLeti()) {
+                    bullets[0]->update(0, 0, players[0]->getFacing());
+                    bullets[0]->setLeti(true);
                     players[0]->vystrel();
                 }
                 prvyRaz[0] = true;
@@ -164,8 +161,8 @@ void Game::handleEvents() {
                     srcR[0].y = playR[0].y + 10;
                     srcR[0].x = playR[0].x;
                 }
-                bullet[0]->setSurX(srcR[0].x);
-                bullet[0]->setSurY(srcR[0].y);
+                bullets[0]->setSurX(srcR[0].x);
+                bullets[0]->setSurY(srcR[0].y);
             }
 
         }
@@ -205,17 +202,12 @@ void Game::update() {
         }
     }
 
-    Message messa = Message();
-    messa.players[0].hp = players[1]->getHp();     // posielat superove HP? o.O
-    messa.players[0].pX = players[0]->getSurX();
-    messa.players[0].pY = players[0]->getSurY();
-    messa.players[0].facing = players[0]->getFacing();
 
-    if(bullet[0]->isLeti() && prvyRaz[0]) {
-//        messa.players[0].vystrelil = true;
+
+    if(bullets[0]->isLeti() && prvyRaz[0]) {
         prvyRaz[0] = false;
 
-    } else if (bullet[0]->isLeti() && !prvyRaz[0]){
+    } else if (bullets[0]->isLeti() && !prvyRaz[0]){
         this->smerGulky(0);
         kontrolaGulky();
     }
@@ -223,6 +215,7 @@ void Game::update() {
 
 void Game::render() {
     SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, bulletText[0], nullptr, nullptr);
 
 
     if(players[0]->getHp() == 0)
@@ -235,6 +228,7 @@ void Game::render() {
     } else {
         SDL_RenderCopy(renderer, background, nullptr, nullptr);
         SDL_RenderCopy(renderer, prekazka, nullptr, &prekR);
+
     }
         for (int i = 0; i < PLAYERS_COUNT; i++) {
             if (players[i]->getFacing() == TOP) {
@@ -260,11 +254,11 @@ void Game::render() {
             }
 
             if (bulletText[i] != nullptr) {
-                if (bullet[i]->getFacing() == TOP) {
+                if (bullets[i]->getFacing() == TOP) {
                     SDL_RenderCopyEx(renderer, bulletText[i], nullptr, &srcR[i], 270, &center, SDL_FLIP_NONE);
-                } else if (bullet[i]->getFacing() == RIGHT) {
+                } else if (bullets[i]->getFacing() == RIGHT) {
                     SDL_RenderCopyEx(renderer, bulletText[i], nullptr, &srcR[i], 0, &center, SDL_FLIP_NONE);
-                } else if (bullet[i]->getFacing() == LEFT) {
+                } else if (bullets[i]->getFacing() == LEFT) {
                     SDL_RenderCopyEx(renderer, bulletText[i], nullptr, &srcR[i], 180, &center, SDL_FLIP_NONE);
                 } else {
                     SDL_RenderCopyEx(renderer, bulletText[i], nullptr, &srcR[i], 90, &center, SDL_FLIP_NONE);
@@ -284,31 +278,31 @@ bool Game::running() {
 
 void Game::smerGulky(int i) {
 
-    if(bullet[i]->getFacing() == TOP) {
+    if(bullets[i]->getFacing() == TOP) {
         srcR[i].y -= 1;
-        bullet[i]->update(0,-1,TOP);
+        bullets[i]->update(0, -1, TOP);
     }
-    if(bullet[i]->getFacing() == BOT) {
+    if(bullets[i]->getFacing() == BOT) {
         srcR[i].y += 1;
-        bullet[i]->update(0,1,BOT);
+        bullets[i]->update(0, 1, BOT);
     }
-    if(bullet[i]->getFacing() == RIGHT) {
+    if(bullets[i]->getFacing() == RIGHT) {
         srcR[i].x += 1;
-        bullet[i]->update(1,0,RIGHT);
+        bullets[i]->update(1, 0, RIGHT);
     }
-    if(bullet[i]->getFacing() == LEFT) {
+    if(bullets[i]->getFacing() == LEFT) {
         srcR[i].x -= 1;
-        bullet[i]->update(-1,0,LEFT);
+        bullets[i]->update(-1, 0, LEFT);
     }
 }
-void Game::updateFromMessage(Message message) {
+void Game::updateFromMessage(PlayerData message) {
 
 //    players[1]->update(message.players[1].pX, message.players[1].pY, message.players[1].facing);
 //    players[0]->setHp(message.players[1].hp);
 
 //    if(message.players[1].vystrelil) {
-//        bullet[1]->update(0,0,players[0]->getFacing());
-//        bullet[1]->setLeti(true);
+//        bullets[1]->update(0,0,players[0]->getFacing());
+//        bullets[1]->setLeti(true);
 //        players[1]->vystrel();
 //        message.players[1].vystrelil = false;   //da sa poslat naspat?
 //        prvyRaz[1] = true;
@@ -327,13 +321,13 @@ void Game::updateFromMessage(Message message) {
 //        }
 //    }
 
-    bullet[1]->setSurX(srcR[1].x);
-    bullet[1]->setSurY(srcR[1].y);
+    bullets[1]->setSurX(srcR[1].x);
+    bullets[1]->setSurY(srcR[1].y);
 
-    if(bullet[1]->isLeti() && prvyRaz[1]) {
+    if(bullets[1]->isLeti() && prvyRaz[1]) {
         prvyRaz[1] = false;
 
-    } else if (bullet[1]->isLeti() && !prvyRaz[1]){
+    } else if (bullets[1]->isLeti() && !prvyRaz[1]){
         this->smerGulky(1);
         kontrolaGulky();
     }
@@ -342,42 +336,50 @@ void Game::updateFromMessage(Message message) {
 void Game::kontrolaGulky() {
     for(int i = 0; i < PLAYERS_COUNT; i++) {
         if(srcR[i].x >= 800 || srcR[i].y >= 600 || srcR[i].x < 0-srcR[i].w || srcR[i].y < 0-srcR[i].h) {
-            bullet[i]->setLeti(false);
+            bullets[i]->setLeti(false);
         }
         if(srcR[i].x >= prekR.x +5 && srcR[i].y >= prekR.y + 5 && srcR[i].x <= prekR.w + prekR.x - 5 && srcR[i].y <= prekR.h + prekR.y - 5) {
-            bullet[i]->setLeti(false);
+            bullets[i]->setLeti(false);
             srcR[i].x = 800;
             srcR[i].y = 800;
         }
-        if(bullet[i]->getSurX() >= players[opacne(i)]->getSurX() && bullet[i]->getSurX() <= players[opacne(i)]->getSurX() + playR[opacne(i)].w) {
-            //bullet->setLeti(false);
-            if(bullet[i]->getSurY() >= players[opacne(i)]->getSurY() && bullet[i]->getSurY() <= players[opacne(i)]->getSurY() + playR[opacne(i)].h) {
-                bullet[i]->setLeti(false);
+        if(bullets[i]->getSurX() >= players[!i]->getSurX() && bullets[i]->getSurX() <= players[!i]->getSurX() + playR[!i].w) {
+            //bullets->setLeti(false);
+            if(bullets[i]->getSurY() >= players[!i]->getSurY() && bullets[i]->getSurY() <= players[!i]->getSurY() + playR[!i].h) {
+                bullets[i]->setLeti(false);
                 srcR[i].x = 800;
                 srcR[i].y = 800;
-                players[opacne(i)]->zasah();
+                players[!i]->zasah();
             }
         }
     }
 }
 
-int Game::opacne(int i) {
-    if(i == 0) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
 
-bool Game::sendStatus(Message* message) {
+bool Game::sendStatus() {
     while (true) {
-        _comunicationManager->sendMessage(message);
-        if(message->exit) {
+        usleep(250000);
+        _comunicationManager->sendMessage(getActualMessage());
+        if(getActualMessage().exit) {
             break;
         }
     }
     sendingThread.detach();
     return true;
+}
+
+PlayerData Game::getActualMessage() {
+    PlayerData message;
+    message.facing = players[0]->getFacing();
+    message.id = players[0]->getId();
+    message.hp = players[0]->getHp();
+    message.pX = players[0]->getSurX();
+    message.pY = players[0]->getSurY();
+    message.bulletFacing = bullets[0]->getFacing();
+    message.bulletY = bullets[0]->getSurY();
+    message.bulletX = bullets[0]->getSurX();
+    message.exit = exit;
+    return message;
 }
 
 

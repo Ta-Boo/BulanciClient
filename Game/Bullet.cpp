@@ -5,11 +5,11 @@
 #include "Bullet.h"
 
 Bullet::Bullet() {
-    this->image = IMG_Load("bullet.png");
+    this->image = IMG_Load("bullets.png");
     this->facing = RIGHT;
 }
 
-double Bullet::getSurX() const {
+int Bullet::getSurX() const {
     return surX;
 }
 
@@ -17,7 +17,7 @@ void Bullet::setSurX(double surX) {
     Bullet::surX = surX;
 }
 
-double Bullet::getSurY() const {
+int Bullet::getSurY() const {
     return surY;
 }
 

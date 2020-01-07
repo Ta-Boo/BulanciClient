@@ -82,4 +82,12 @@ void Player::setFacing(Facing facing) {
     this->facing = facing;
 }
 
+int Player::getId() const {
+    return id;
+}
+
+void Player::setId(int id) {
+    Player::id = id;
+}
+
 

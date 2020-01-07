@@ -8,7 +8,7 @@
 
 #include <SDL_surface.h>
 #include <SDL_image.h>
-#include "../Comunication/Message/Data/DataPlayer.h"
+#include "../Comunication/Message/Data/PlayerData.h"
 
 //enum Facing {TOP, RIGHT, BOT, LEFT};
 
@@ -20,6 +20,13 @@ private:
     double surY = 0;
     int pocetNabojov;
     Facing facing;
+    int id;
+public:
+    void setId(int id);
+
+public:
+    int getId() const;
+
 public:
     Player(double surX, double surY);
     ~Player();

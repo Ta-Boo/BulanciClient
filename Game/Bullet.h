@@ -12,17 +12,17 @@
 class Bullet {
 private:
     SDL_Surface * image;
-    double surX = 0;
-    double surY = 0;
+    int surX = 0;
+    int surY = 0;
     Facing facing;
     bool leti = false;
 public:
     Bullet();
     ~Bullet();
 
-    double getSurX() const;
+    int getSurX() const;
     void setSurX(double surX);
-    double getSurY() const;
+    int getSurY() const;
     void setSurY(double surY);
     void update(double x, double y, Facing facing);
     SDL_Surface *getImage() const;

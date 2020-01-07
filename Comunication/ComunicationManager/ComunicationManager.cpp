@@ -7,14 +7,12 @@
 
 
 ComunicationManager::ComunicationManager(){
-    actualMessage = new Message();
 
 };
 
 
 ComunicationManager::~ComunicationManager() {
     close(sockfd);
-    delete actualMessage;
 }
 
 int ComunicationManager::connectSocket(char *adress, int port) {
@@ -51,9 +49,9 @@ int ComunicationManager::connectSocket(char *adress, int port) {
     return 0;
 }
 
-void ComunicationManager::sendMessage(Message* message) {
+void ComunicationManager::sendMessage(PlayerData message) {
         printf("sending... \n");
-        write(sockfd, message->toString() , strlen(message->toString())+1);
+        write(sockfd, message.toString().c_str() , strlen(message.toString().c_str())+1);
     printf("sent! \n");
 
 
@@ -73,14 +71,14 @@ void ComunicationManager::listenForMessages(Game* game) {
         read(sockfd, buffer, 255);
 
         if (strcmp(buffer, "FINISH") == 0 ) {
-            Message message;
+            PlayerData message;
             message.exit = true;
-            sendMessage(&message);
+            sendMessage(message);
             break;
         }
-        MessageFactory factory;
+        PlayerFactory factory;
 
-        game->updateFromMessage(MessageFactory::createMessage(buffer));
+        game->updateFromMessage(PlayerFactory::createPlayerData(buffer));
         printf("%s\n",buffer);
     }
 }
