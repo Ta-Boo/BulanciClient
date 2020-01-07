@@ -115,13 +115,27 @@ void Game::handleEvents() {
             break;
         }
         if (keys[SDL_SCANCODE_W]) {
-            players[0]->update(0, -3, TOP);
+            if(players[0]->getSurX() >= prekR.x && players[0]->getSurY() > prekR.y && players[0]->getSurX() <= prekR.x + prekR.w && players[0]->getSurY() <= prekR.y + prekR.h) {
+                    players[0]->update(0, 0, TOP);
+            } else {
+                players[0]->update(0, -3, TOP);
+            }
         }
         if (keys[SDL_SCANCODE_A]) {
-            players[0]->update(-3, 0, LEFT);
+            if(players[0]->getSurX() <= prekR.x + prekR.w && players[0]->getSurX() > prekR.x && players[0]->getSurY() <= prekR.y + prekR.h && players[0]->getSurY() >= prekR.y) {
+                players[0]->update(0, 0, LEFT);
+            } else {
+                players[0]->update(-3, 0, LEFT);
+            }
+            //players[0]->update(-3, 0, LEFT);
         }
         if (keys[SDL_SCANCODE_S]) {
-            players[0]->update(0, 3, BOT);
+            if(players[0]->getSurX() >= prekR.x && players[0]->getSurX() <= prekR.x + prekR.w && players[0]->getSurY() + playR[0].h >= prekR.y && players[0]->getSurY() < prekR.y + prekR.h) {
+                players[0]->update(0, 0, BOT);
+            } else {
+                players[0]->update(0, 3, BOT);
+            }
+            //players[0]->update(0, 3, BOT);
         }
         if (keys[SDL_SCANCODE_D]) {
             players[0]->update(3, 0, RIGHT);
