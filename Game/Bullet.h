@@ -18,7 +18,6 @@ private:
     bool leti = false;
 public:
     Bullet();
-
     ~Bullet();
 
     double getSurX() const;
@@ -29,8 +28,6 @@ public:
     SDL_Surface *getImage() const;
     bool isLeti() const;
     void setLeti(bool leti);
-
-
     Facing getFacing() const;
 };
 

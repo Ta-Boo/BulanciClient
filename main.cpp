@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
 //    comunicationManager.activateListening(&game);
 
 
-    game.init("tf", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600);
+    game.init("bulanci", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600);
     while (game.running()){
         game.handleEvents();
         game.update();

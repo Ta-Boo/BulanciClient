@@ -22,9 +22,8 @@ private:
     Facing facing;
 public:
     Player(double surX, double surY);
-    //Player();
-
     ~Player();
+
     SDL_Surface *getImage() const;
     void setImage(SDL_Surface *image);
     int getSurX() const;

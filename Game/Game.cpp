@@ -10,21 +10,31 @@ using namespace std;
 
 Game::Game() {
 
-    players[0] = new Player(0,0);
-    players[1] = new Player(740, 0);
+    players[0] = new Player(0,300);
+    players[1] = new Player(740, 300);
     players[1]->update(0,0,LEFT);
 
-    this->bullet = new Bullet();
+    bullet[0] = new Bullet();
+    bullet[1] = new Bullet();
 }
 
 Game::~Game() {
     for(int i = 0; i < PLAYERS_COUNT; i++) {
         delete players[i];
+        delete bullet[i];
+        SDL_DestroyTexture(playerText[i]);
+        SDL_DestroyTexture(bulletText[i]);
     }
-    delete bullet;
+    //delete bullet;
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
-    SDL_Quit;
+    SDL_DestroyTexture(background);
+    SDL_DestroyTexture(prekazka);
+    //SDL_DestroyTexture(bulletText);
+    for(int i = 0; i < 2; i++) {
+        SDL_DestroyTexture(koniecText[i]);
+    }
+    SDL_Quit();
 }
 
 void Game::init(const char *title, int poX, int poY, int width, int height) {
@@ -69,13 +79,23 @@ void Game::init(const char *title, int poX, int poY, int width, int height) {
         playR[i].x = players[i]->getSurX();
         playR[i].y = players[i]->getSurY();
         naboje[i] = players[i]->getPocetNabojov();
-    }
-    SDL_Surface* bulletSur = bullet->getImage();//IMG_Load("bullet.png");
-    bulletText = SDL_CreateTextureFromSurface(renderer, bulletSur);
-    SDL_FreeSurface(bulletSur);
 
-    srcR.w = 10;
-    srcR.h = 10;
+        SDL_Surface* bulletSur = bullet[i]->getImage();//IMG_Load("bullet.png");
+        bulletText[i] = SDL_CreateTextureFromSurface(renderer, bulletSur);
+        SDL_FreeSurface(bulletSur);
+
+        srcR[i].w = 10;
+        srcR[i].h = 10;
+
+    }
+
+    SDL_Surface* koniec = IMG_Load("gameOver.jpeg");
+    koniecText[0] = SDL_CreateTextureFromSurface(renderer, koniec);
+    SDL_FreeSurface(koniec);
+
+    SDL_Surface* koniec1 = IMG_Load("win.jpeg");
+    koniecText[1] = SDL_CreateTextureFromSurface(renderer, koniec1);
+    SDL_FreeSurface(koniec1);
 
     center.x = 5;
     center.y = 5;
@@ -106,29 +126,29 @@ void Game::handleEvents() {
         if (keys[SDL_SCANCODE_D]) {
             players[0]->update(3, 0, RIGHT);
         }
-        if (keys[SDL_SCANCODE_SPACE] && !bullet->isLeti()) {
+        if (keys[SDL_SCANCODE_SPACE] && !bullet[0]->isLeti()) {
             if(players[0]->getPocetNabojov() > 0) {
-                    if(!bullet->isLeti()) {
-                        bullet->update(0,0,players[0]->getFacing());
-                        bullet->setLeti(true);
-                        players[0]->vystrel();
+                if(!bullet[0]->isLeti()) {
+                    bullet[0]->update(0,0,players[0]->getFacing());
+                    bullet[0]->setLeti(true);
+                    players[0]->vystrel();
                 }
-                prvyRaz = true;
+                prvyRaz[0] = true;
                 if(players[0]->getFacing() == RIGHT) {
-                    srcR.y = playR[0].y + 40;
-                    srcR.x = playR[0].x + 40;
+                    srcR[0].y = playR[0].y + 40;
+                    srcR[0].x = playR[0].x + 40;
                 } else if(players[0]->getFacing() == TOP){
-                    srcR.y = playR[0].y;
-                    srcR.x = playR[0].x + 40;
+                    srcR[0].y = playR[0].y;
+                    srcR[0].x = playR[0].x + 40;
                 } else if(players[0]->getFacing() == BOT){
-                    srcR.y = playR[0].y + 40;
-                    srcR.x = playR[0].x + 10;
+                    srcR[0].y = playR[0].y + 40;
+                    srcR[0].x = playR[0].x + 10;
                 } else if(players[0]->getFacing() == LEFT){
-                    srcR.y = playR[0].y + 10;
-                    srcR.x = playR[0].x;
+                    srcR[0].y = playR[0].y + 10;
+                    srcR[0].x = playR[0].x;
                 }
-                bullet->setSurX(srcR.x);
-                bullet->setSurY(srcR.y);
+                bullet[0]->setSurX(srcR[0].x);
+                bullet[0]->setSurY(srcR[0].y);
             }
 
         }
@@ -136,93 +156,100 @@ void Game::handleEvents() {
 }
 
 void Game::update() {
-    if(players[0]->getHp() == 0)
-    {
-        //todo ukoncenie hry
-    }
-    if(players[0]->getPocetNabojov() == 0) {
-        if (pocitadlo == 4000) {
-            players[0]->naplnZbran();
-            pocitadlo = 0;
+    for(int i = 0; i < PLAYERS_COUNT; i++) {
+        if(players[i]->getPocetNabojov() == 0) {
+            if (pocitadlo == 4000) {
+                players[i]->naplnZbran();
+                pocitadlo = 0;
+            }
+            pocitadlo++;
         }
-        pocitadlo++;
-    }
+        playR[i].x = players[i]->getSurX();
+        playR[i].y = players[i]->getSurY();
 
-    playR[0].x = players[0]->getSurX();
-    playR[0].y = players[0]->getSurY();
-
-
-    if(bullet->isLeti() && prvyRaz) {
-        prvyRaz = false;
-
-    } else if (bullet->isLeti() && !prvyRaz){
-        this->smerGulky();
-        kontrolaGulky();
-
-    }
-
-    if ( playR[0].x < 0 ) {
-        playR[0].x = 0;
-    }
-    else if ( playR[0].x > 800-playR[0].w ) {
-        playR[0].x = 800-playR[0].w;
-    }
-    if ( playR[0].y < 0 ) {
-        playR[0].y = 0;
-    }
-    else if ( playR[0].y > 600-playR[0].h ) {
-        playR[0].y = 600-playR[0].h;
+        if ( playR[i].x < 0 ) {
+            playR[i].x = 0;
+        }
+        else if ( playR[i].x > 800-playR[i].w ) {
+            playR[i].x = 800-playR[i].w;
+        }
+        if ( playR[i].y < 0 ) {
+            playR[i].y = 0;
+        }
+        else if ( playR[i].y > 600-playR[i].h ) {
+            playR[i].y = 600-playR[i].h;
+        }
     }
 
     Message messa = Message();
-    messa.players[0].hp = players[0]->getHp();
+    messa.players[0].hp = players[1]->getHp();     // posielat superove HP? o.O
     messa.players[0].possX = players[0]->getSurX();
     messa.players[0].possY = players[0]->getSurY();
     messa.players[0].facing = players[0]->getFacing();
+
+    if(bullet[0]->isLeti() && prvyRaz[0]) {
+        messa.players[0].vystrelil = true;
+        prvyRaz[0] = false;
+
+    } else if (bullet[0]->isLeti() && !prvyRaz[0]){
+        this->smerGulky(0);
+        kontrolaGulky();
+    }
 }
 
 void Game::render() {
     SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, background, nullptr, nullptr);
-    SDL_RenderCopy(renderer, prekazka, nullptr, &prekR);
 
 
-    for(int i = 0; i < PLAYERS_COUNT; i++) {
-        if(players[i]->getFacing() == TOP) {
-            SDL_RenderCopyEx(renderer, playerText[i], nullptr, &playR[i], 270, &centerP, SDL_FLIP_NONE);
-        } else if(players[i]->getFacing() == RIGHT) {
-            SDL_RenderCopyEx(renderer, playerText[i], nullptr, &playR[i], 0, &centerP, SDL_FLIP_NONE);
-        } else if(players[i]->getFacing() == LEFT) {
-            SDL_RenderCopyEx(renderer, playerText[i], nullptr, &playR[i], 180, &centerP, SDL_FLIP_NONE);
-        } else if(players[i]->getFacing() == BOT){
-            SDL_RenderCopyEx(renderer, playerText[i], nullptr, &playR[i], 90, &centerP, SDL_FLIP_NONE);
-        }
-        int x = 10 + 670*i;
-        int y = 580;
-        int j = 5 - players[i]->getPocetNabojov();
-        for(int i = 0; i < 5 - j; i++) {
+    if(players[0]->getHp() == 0)
+    {
+        SDL_RenderCopy(renderer, koniecText[0], nullptr, nullptr);
 
-            naboj.w = 30;
-            naboj.h = 30;
-            naboj.x = x;
-            naboj.y = y;
-            x+=20;
-            SDL_RenderCopyEx(renderer, bulletText, nullptr, &naboj, 270, &center, SDL_FLIP_NONE);
-        }
+    } else if(players[1]->getHp() == 0)
+    {
+        SDL_RenderCopy(renderer, koniecText[1], nullptr, nullptr);
+    } else {
+        SDL_RenderCopy(renderer, background, nullptr, nullptr);
+        SDL_RenderCopy(renderer, prekazka, nullptr, &prekR);
     }
+        for (int i = 0; i < PLAYERS_COUNT; i++) {
+            if (players[i]->getFacing() == TOP) {
+                SDL_RenderCopyEx(renderer, playerText[i], nullptr, &playR[i], 270, &centerP, SDL_FLIP_NONE);
+            } else if (players[i]->getFacing() == RIGHT) {
+                SDL_RenderCopyEx(renderer, playerText[i], nullptr, &playR[i], 0, &centerP, SDL_FLIP_NONE);
+            } else if (players[i]->getFacing() == LEFT) {
+                SDL_RenderCopyEx(renderer, playerText[i], nullptr, &playR[i], 180, &centerP, SDL_FLIP_NONE);
+            } else if (players[i]->getFacing() == BOT) {
+                SDL_RenderCopyEx(renderer, playerText[i], nullptr, &playR[i], 90, &centerP, SDL_FLIP_NONE);
+            }
+            int x = 10 + 670 * i;
+            int y = 580;
+            int j = 5 - players[i]->getPocetNabojov();
+            for (int i = 0; i < 5 - j; i++) {
 
-    if (bulletText != nullptr) {
-        if(bullet->getFacing() == TOP) {
-            SDL_RenderCopyEx(renderer, bulletText, nullptr, &srcR, 270, &center, SDL_FLIP_NONE);
-        } else if(bullet->getFacing() == RIGHT) {
-            SDL_RenderCopyEx(renderer, bulletText, nullptr, &srcR, 0, &center, SDL_FLIP_NONE);
-        } else if(bullet->getFacing() == LEFT) {
-            SDL_RenderCopyEx(renderer, bulletText, nullptr, &srcR, 180, &center, SDL_FLIP_NONE);
-        } else {
-            SDL_RenderCopyEx(renderer, bulletText, nullptr, &srcR, 90, &center, SDL_FLIP_NONE);
+                naboj.w = 30;
+                naboj.h = 30;
+                naboj.x = x;
+                naboj.y = y;
+                x += 20;
+                SDL_RenderCopyEx(renderer, bulletText[0], nullptr, &naboj, 270, &center, SDL_FLIP_NONE);
+            }
+
+            if (bulletText[i] != nullptr) {
+                if (bullet[i]->getFacing() == TOP) {
+                    SDL_RenderCopyEx(renderer, bulletText[i], nullptr, &srcR[i], 270, &center, SDL_FLIP_NONE);
+                } else if (bullet[i]->getFacing() == RIGHT) {
+                    SDL_RenderCopyEx(renderer, bulletText[i], nullptr, &srcR[i], 0, &center, SDL_FLIP_NONE);
+                } else if (bullet[i]->getFacing() == LEFT) {
+                    SDL_RenderCopyEx(renderer, bulletText[i], nullptr, &srcR[i], 180, &center, SDL_FLIP_NONE);
+                } else {
+                    SDL_RenderCopyEx(renderer, bulletText[i], nullptr, &srcR[i], 90, &center, SDL_FLIP_NONE);
+                }
+            }
         }
-    }
-    SDL_RenderPresent(renderer);
+
+
+        SDL_RenderPresent(renderer);
 
 }
 
@@ -231,50 +258,93 @@ bool Game::running() {
     return isRunning;
 }
 
-void Game::smerGulky() {
+void Game::smerGulky(int i) {
 
-    if(bullet->getFacing() == TOP) {
-        srcR.y -= 1;
-        bullet->update(0,-1,TOP);
+    if(bullet[i]->getFacing() == TOP) {
+        srcR[i].y -= 1;
+        bullet[i]->update(0,-1,TOP);
     }
-    if(bullet->getFacing() == BOT) {
-        srcR.y += 1;
-        bullet->update(0,1,BOT);
+    if(bullet[i]->getFacing() == BOT) {
+        srcR[i].y += 1;
+        bullet[i]->update(0,1,BOT);
     }
-    if(bullet->getFacing() == RIGHT) {
-        srcR.x += 1;
-        bullet->update(1,0,RIGHT);
+    if(bullet[i]->getFacing() == RIGHT) {
+        srcR[i].x += 1;
+        bullet[i]->update(1,0,RIGHT);
     }
-    if(bullet->getFacing() == LEFT) {
-        srcR.x -= 1;
-        bullet->update(-1,0,LEFT);
+    if(bullet[i]->getFacing() == LEFT) {
+        srcR[i].x -= 1;
+        bullet[i]->update(-1,0,LEFT);
     }
 }
 void Game::updateFromMessage(Message message) {
 
     players[1]->update(message.players[1].possX, message.players[1].possY,message.players[1].facing);
-    players[1]->setHp(message.players[1].hp);
-}
+    players[0]->setHp(message.players[1].hp);
 
-void Game::kontrolaGulky() {
-    if(srcR.x >= 800 || srcR.y >= 600 || srcR.x < 0-srcR.w || srcR.y < 0-srcR.h) {
-        bullet->setLeti(false);
-    }
-    if(srcR.x >= prekR.x +5 && srcR.y >= prekR.y + 5 && srcR.x <= prekR.w + prekR.x - 5 && srcR.y <= prekR.h + prekR.y - 5) {
-        bullet->setLeti(false);
-        srcR.x = 800;
-        srcR.y = 800;
-    }
-    if(bullet->getSurX() >= players[1]->getSurX() && bullet->getSurX() <= players[1]->getSurX() + playR[1].w) {
-        //bullet->setLeti(false);
-        if(bullet->getSurY() >= players[1]->getSurY() && bullet->getSurY() <= players[1]->getSurY() + playR[1].h) {
-                bullet->setLeti(false);
-                srcR.x = 800;
-                srcR.y = 800;
-                players[1]->zasah();
+    if(message.players[1].vystrelil) {
+        bullet[1]->update(0,0,players[0]->getFacing());
+        bullet[1]->setLeti(true);
+        players[1]->vystrel();
+        message.players[1].vystrelil = false;   //da sa poslat naspat?
+        prvyRaz[1] = true;
+        if(players[1]->getFacing() == RIGHT) {
+            srcR[1].y = playR[1].y + 40;
+            srcR[1].x = playR[1].x + 40;
+        } else if(players[1]->getFacing() == TOP){
+            srcR[1].y = playR[1].y;
+            srcR[1].x = playR[1].x + 40;
+        } else if(players[0]->getFacing() == BOT){
+            srcR[1].y = playR[1].y + 40;
+            srcR[1].x = playR[1].x + 10;
+        } else if(players[1]->getFacing() == LEFT){
+            srcR[1].y = playR[1].y + 10;
+            srcR[1].x = playR[1].x;
         }
     }
 
+    bullet[1]->setSurX(srcR[1].x);
+    bullet[1]->setSurY(srcR[1].y);
+
+    if(bullet[1]->isLeti() && prvyRaz[1]) {
+        prvyRaz[1] = false;
+
+    } else if (bullet[1]->isLeti() && !prvyRaz[1]){
+        this->smerGulky(1);
+        kontrolaGulky();
+    }
+
+
+}
+
+void Game::kontrolaGulky() {
+    for(int i = 0; i < PLAYERS_COUNT; i++) {
+        if(srcR[i].x >= 800 || srcR[i].y >= 600 || srcR[i].x < 0-srcR[i].w || srcR[i].y < 0-srcR[i].h) {
+            bullet[i]->setLeti(false);
+        }
+        if(srcR[i].x >= prekR.x +5 && srcR[i].y >= prekR.y + 5 && srcR[i].x <= prekR.w + prekR.x - 5 && srcR[i].y <= prekR.h + prekR.y - 5) {
+            bullet[i]->setLeti(false);
+            srcR[i].x = 800;
+            srcR[i].y = 800;
+        }
+        if(bullet[i]->getSurX() >= players[opacne(i)]->getSurX() && bullet[i]->getSurX() <= players[opacne(i)]->getSurX() + playR[opacne(i)].w) {
+            //bullet->setLeti(false);
+            if(bullet[i]->getSurY() >= players[opacne(i)]->getSurY() && bullet[i]->getSurY() <= players[opacne(i)]->getSurY() + playR[opacne(i)].h) {
+                bullet[i]->setLeti(false);
+                srcR[i].x = 800;
+                srcR[i].y = 800;
+                players[opacne(i)]->zasah();
+            }
+        }
+    }
+}
+
+int Game::opacne(int i) {
+    if(i == 0) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 

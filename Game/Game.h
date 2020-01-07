@@ -20,37 +20,36 @@ class Player;
 
 class Game {
 private:
-    DataPlayer player;
-    //Player *player1 = new Player(0,0);
-    //Player *player;
-    //Player *enemy;
-    Player *players[PLAYERS_COUNT];
-    int pocitadlo = 0;
+    SDL_Window *window;
+    SDL_Renderer *renderer;
 
-    Bullet *bullet;
-    bool leti = false;
-    bool prvyRaz = true;
     SDL_Texture* background;
+    SDL_Texture* koniecText[2];
     SDL_Texture* prekazka;
     SDL_Texture* playerText[PLAYERS_COUNT];
-    int naboje[PLAYERS_COUNT];
-    //SDL_Texture* enemyText;
+    SDL_Texture* bulletText[PLAYERS_COUNT];
 
-    SDL_Rect srcR, naboj, prekR;
+    SDL_Rect srcR[PLAYERS_COUNT];
+    SDL_Rect naboj, prekR;
     SDL_Rect playR[PLAYERS_COUNT];
 
     SDL_Point center;
     SDL_Point centerP;
-    SDL_Texture* bulletText = nullptr;
 
+    DataPlayer player;
+    Player *players[PLAYERS_COUNT];
+    Bullet *bullet[PLAYERS_COUNT];
+
+    int pocitadlo = 0;
+    bool leti = false;
+    bool prvyRaz[PLAYERS_COUNT];
+    int naboje[PLAYERS_COUNT];
 
     bool isRunning;
-    SDL_Window *window;
-    SDL_Renderer *renderer;
-    int cnt = 0;
 
-    void smerGulky();
+    void smerGulky(int i);
     void kontrolaGulky();
+    int opacne(int i);
 
 public:
     Game();

@@ -69,11 +69,17 @@ void Player::setHp(int hp) {
 }
 
 void Player::zasah() {
-    this->hp -= 10;
+    if(this->hp > 0) {
+        this->hp -= 10;
+    }
 }
 
 int Player::getHp() const {
     return hp;
+}
+
+void Player::setFacing(Facing facing) {
+    this->facing = facing;
 }
 
 
