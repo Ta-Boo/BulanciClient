@@ -50,18 +50,15 @@ int ComunicationManager::connectSocket(char *adress, int port) {
 }
 
 void ComunicationManager::sendMessage(PlayerData message) {
-        printf("sending... \n");
-        write(sockfd, message.toString().c_str() , strlen(message.toString().c_str())+1);
-    printf("sent! \n");
-
-
+    char mess[256] = "";
+    bzero(mess,256);
+    strcpy(mess, message.toString().c_str());
+    write(sockfd, mess , strlen(mess)+1);
 }
 
 void ComunicationManager::activateListening(Game* game) {
     thrd = thread(&ComunicationManager::listenForMessages,this, game);
 }
-
-
 
 //MARK: private
 void ComunicationManager::listenForMessages(Game* game) {
@@ -69,17 +66,14 @@ void ComunicationManager::listenForMessages(Game* game) {
     while(true) {
         bzero(buffer,256);
         read(sockfd, buffer, 255);
-
+        cout << "i received : " << buffer << endl;
         if (strcmp(buffer, "FINISH") == 0 ) {
             PlayerData message;
             message.exit = true;
             sendMessage(message);
             break;
         }
-        PlayerFactory factory;
-
         game->updateFromMessage(PlayerFactory::createPlayerData(buffer));
-        printf("%s\n",buffer);
     }
 }
 

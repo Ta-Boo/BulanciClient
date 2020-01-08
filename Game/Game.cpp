@@ -15,7 +15,7 @@ Game::Game() {
 
     bullets[0] = new Bullet();
     bullets[1] = new Bullet();
-//    sendingThread = thread(&Game::sendStatus, this, actualMessage);
+    sendingThread = thread(&Game::sendStatus, this);
 }
 
 Game::~Game() {
@@ -343,6 +343,7 @@ void Game::kontrolaGulky() {
 
 
 bool Game::sendStatus() {
+    sleep(2);
     while (true) {
         usleep(250000);
         _comunicationManager->sendMessage(getActualMessage());
