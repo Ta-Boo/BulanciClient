@@ -51,3 +51,7 @@ bool Bullet::isLeti() const {
 void Bullet::setLeti(bool leti) {
     Bullet::leti = leti;
 }
+
+void Bullet::setFacing(Facing facing) {
+    Bullet::facing = facing;
+}

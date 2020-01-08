@@ -15,6 +15,10 @@ private:
     int surX = 0;
     int surY = 0;
     Facing facing;
+public:
+    void setFacing(Facing facing);
+
+private:
     bool leti = false;
 public:
     Bullet();

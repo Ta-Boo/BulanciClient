@@ -285,6 +285,13 @@ void Game::updateFromMessage(PlayerData message) {
     players[1]->setSurX(message.pX);
     players[1]->setSurY(message.pY);
     players[1]->setFacing(message.facing);
+    players[0]->setHp(message.hp);
+
+    bullets[1]->setSurX(message.bulletX);
+    bullets[1]->setSurY(message.bulletY);
+    bullets[1]->setFacing(message.bulletFacing);
+    srcR[1].x = (message.bulletX);
+    srcR[1].y = (message.bulletY);
 
 //    players[1]->update(message.players[1].pX, message.players[1].pY, message.players[1].facing);
 //    players[0]->setHp(message.players[1].hp);
@@ -346,7 +353,7 @@ void Game::kontrolaGulky() {
 
 
 bool Game::sendStatus() {
-    sleep(1);
+    sleep(3);
     while (true) {
         usleep(50000);
         _comunicationManager->sendMessage(getActualMessage());
@@ -362,7 +369,7 @@ PlayerData Game::getActualMessage() {
     PlayerData message;
     message.facing = players[0]->getFacing();
     message.id = players[0]->getId();
-    message.hp = players[0]->getHp();
+    message.hp = players[1]->getHp();
     message.pX = players[0]->getSurX();
     message.pY = players[0]->getSurY();
     message.bulletFacing = bullets[0]->getFacing();
