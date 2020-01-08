@@ -59,6 +59,5 @@ string PlayerData::getFacingString() {
             return "2";
         case LEFT :
             return "3";
-
     }
 }

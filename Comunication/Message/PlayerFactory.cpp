@@ -34,30 +34,22 @@ PlayerFactory::~PlayerFactory() {
          case 3:
              facing = LEFT;
              break;
-
-         default:
-             facing = TOP;
-             break;
      }
      player.bulletFacing = facing;playerStats.pop_back();
      player.pY = stoi(playerStats[playerStats.size()-1]);playerStats.pop_back();
      player.pX = stoi(playerStats[playerStats.size()-1]);playerStats.pop_back();
      switch(stoi(playerStats[playerStats.size()-1])) {
-         case 1:
+         case 0:
              facing = TOP;
              break;
-         case 2:
+         case 1:
              facing = RIGHT;
              break;
-         case 3:
+         case 2:
              facing = BOT;
              break;
-         case 4:
+         case 3:
              facing = LEFT;
-             break;
-
-         default:
-             facing = TOP;
              break;
      }
      player.facing = facing;playerStats.pop_back();

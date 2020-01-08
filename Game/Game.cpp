@@ -346,7 +346,7 @@ void Game::kontrolaGulky() {
 
 
 bool Game::sendStatus() {
-    sleep(2);
+    sleep(1);
     while (true) {
         usleep(50000);
         _comunicationManager->sendMessage(getActualMessage());
