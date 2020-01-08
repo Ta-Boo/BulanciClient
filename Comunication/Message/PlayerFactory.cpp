@@ -22,16 +22,16 @@ PlayerFactory::~PlayerFactory() {
      player.bulletX = stoi(playerStats[playerStats.size()-1]);playerStats.pop_back();
      Facing facing;
      switch(stoi(playerStats[playerStats.size()-1])) {
-         case 1:
+         case 0:
              facing = TOP;
              break;
-         case 2:
+         case 1:
              facing = RIGHT;
              break;
-         case 3:
+         case 2:
              facing = BOT;
              break;
-         case 4:
+         case 3:
              facing = LEFT;
              break;
 

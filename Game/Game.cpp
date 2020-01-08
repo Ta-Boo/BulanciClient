@@ -282,6 +282,9 @@ void Game::smerGulky(int i) {
     }
 }
 void Game::updateFromMessage(PlayerData message) {
+    players[1]->setSurX(message.pX);
+    players[1]->setSurY(message.pY);
+    players[1]->setFacing(message.facing);
 
 //    players[1]->update(message.players[1].pX, message.players[1].pY, message.players[1].facing);
 //    players[0]->setHp(message.players[1].hp);
@@ -345,7 +348,7 @@ void Game::kontrolaGulky() {
 bool Game::sendStatus() {
     sleep(2);
     while (true) {
-        usleep(250000);
+        usleep(50000);
         _comunicationManager->sendMessage(getActualMessage());
         if(getActualMessage().exit) {
             break;

@@ -32,6 +32,7 @@ public:
 
     PlayerData(int id, int hp, int pX, int pY, Facing facing, Facing bulletFacing, int bulletX, int bulletY, int exit);
 
+    string getFacingString();
 };
 
 
