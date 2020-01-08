@@ -205,10 +205,7 @@ void Game::update() {
 }
 
 void Game::render() {
-    if(exit == 1) {
-        isRunning = false;
-        return;
-    }
+
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, bulletText[0], nullptr, nullptr);
 
@@ -277,6 +274,11 @@ void Game::render() {
 
         SDL_RenderPresent(renderer);
 
+    if(exit == 1) {
+        usleep(10000);
+        isRunning = false;
+        return;
+    }
 }
 
 
