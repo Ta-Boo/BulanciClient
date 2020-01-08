@@ -17,6 +17,6 @@ int main(int argc, char* argv[]) {
         game.update();
         game.render();
     }
-//    comunicationManager.waitForFinish();
+    comunicationManager.waitForFinish();
     return 0;
 }

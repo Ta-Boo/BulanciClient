@@ -25,6 +25,7 @@ void Bullet::setSurY(double surY) {
     Bullet::surY = surY;
 }
 
+
 SDL_Surface *Bullet::getImage() const {
     return image;
 }

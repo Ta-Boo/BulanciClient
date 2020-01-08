@@ -9,7 +9,6 @@ using namespace boost;
 PlayerFactory::PlayerFactory() {}
 
 PlayerFactory::~PlayerFactory() {
-
 }
 
  PlayerData PlayerFactory::createPlayerData(char *input) {

@@ -50,6 +50,7 @@ int ComunicationManager::connectSocket(char *adress, int port) {
 }
 
 void ComunicationManager::sendMessage(PlayerData message) {
+    cout << "sending = " << message.toString() << endl;
     char mess[256] = "";
     bzero(mess,256);
     strcpy(mess, message.toString().c_str());
@@ -67,14 +68,14 @@ void ComunicationManager::listenForMessages(Game* game) {
         bzero(buffer,256);
         read(sockfd, buffer, 255);
         cout << "i received : " << buffer << endl;
-        if (strcmp(buffer, "FINISH") == 0 ) {
-            PlayerData message;
-            message.exit = true;
-            sendMessage(message);
+        PlayerData data = PlayerFactory::createPlayerData(buffer);
+        if(data.exit) {
+            game->updateFromMessage(data);
             break;
         }
-        game->updateFromMessage(PlayerFactory::createPlayerData(buffer));
+        game->updateFromMessage(data);
     }
+    cout << "KONCIM" << endl;
 }
 
 

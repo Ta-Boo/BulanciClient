@@ -34,6 +34,7 @@ Game::~Game() {
     for(int i = 0; i < 2; i++) {
         SDL_DestroyTexture(koniecText[i]);
     }
+    reloadingThread.join();
     SDL_Quit();
 }
 
@@ -156,13 +157,14 @@ void Game::handleEvents() {
 }
 void Game::reload() {
 
-    sleep(4);
+    sleep(1);
     players[0]->naplnZbran();
     reloading = false;
     reloadingThread.detach();
 }
 
 void Game::update() {
+//    exit = 1;
     for(int i = 0; i < PLAYERS_COUNT; i++) {
         if(players[0]->getPocetNabojov() == 0) {
             if (!reloading) {
@@ -200,6 +202,10 @@ void Game::update() {
 }
 
 void Game::render() {
+    if(exit == 1) {
+        isRunning = false;
+        return;
+    }
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, bulletText[0], nullptr, nullptr);
 
@@ -207,10 +213,12 @@ void Game::render() {
     if(players[0]->getHp() == 0)
     {
         SDL_RenderCopy(renderer, koniecText[0], nullptr, nullptr);
+        exit = true;
 
     } else if(players[1]->getHp() == 0)
     {
         SDL_RenderCopy(renderer, koniecText[1], nullptr, nullptr);
+        exit = true;
     } else {
         SDL_RenderCopy(renderer, background, nullptr, nullptr);
         for (int i = 0; i < PLAYERS_COUNT; i++) {
@@ -292,6 +300,7 @@ void Game::updateFromMessage(PlayerData message) {
     bullets[1]->setFacing(message.bulletFacing);
     srcR[1].x = (message.bulletX);
     srcR[1].y = (message.bulletY);
+    exit = message.exit;
 
     bullets[1]->setSurX(srcR[1].x);
     bullets[1]->setSurY(srcR[1].y);
@@ -335,6 +344,8 @@ bool Game::sendStatus() {
             break;
         }
     }
+    cout << "KONCIM posielanie " << endl;
+
     sendingThread.detach();
     return true;
 }

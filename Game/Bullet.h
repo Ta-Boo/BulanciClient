@@ -15,10 +15,6 @@ private:
     int surX = 0;
     int surY = 0;
     Facing facing;
-public:
-    void setFacing(Facing facing);
-
-private:
     bool leti = false;
 public:
     Bullet();
@@ -28,6 +24,9 @@ public:
     void setSurX(double surX);
     int getSurY() const;
     void setSurY(double surY);
+
+    void setFacing(Facing facing);
+
     void update(double x, double y, Facing facing);
     SDL_Surface *getImage() const;
     bool isLeti() const;

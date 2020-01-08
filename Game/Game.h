@@ -37,23 +37,23 @@ private:
 
     Player *players[PLAYERS_COUNT];
     Bullet *bullets[PLAYERS_COUNT];
-    int exit = 0;
-
     bool    reloading = false;
+
     bool    prvyRaz[PLAYERS_COUNT];
     int     naboje[PLAYERS_COUNT];
-
     bool isRunning;
 
     void smerGulky(int i);
-    void kontrolaGulky();
 
+    void kontrolaGulky();
     thread reloadingThread;
+
     void reload();
     thread sendingThread;
     PlayerData getActualMessage();
     bool sendStatus();
 public:
+    int exit = 0;
     ComunicationManager* _comunicationManager;
 
     Game();
