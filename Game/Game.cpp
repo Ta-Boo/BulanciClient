@@ -98,6 +98,10 @@ void Game::init(const char *title, int poX, int poY, int width, int height) {
     koniecText[1] = SDL_CreateTextureFromSurface(renderer, koniec1);
     SDL_FreeSurface(koniec1);
 
+    SDL_Surface* palickaS = IMG_Load("srdiecko.png");
+    palickaTx = SDL_CreateTextureFromSurface(renderer, palickaS);
+    SDL_FreeSurface(palickaS);
+
     center.x = 5;
     center.y = 5;
 
@@ -157,14 +161,13 @@ void Game::handleEvents() {
 }
 void Game::reload() {
 
-    sleep(1);
+    sleep(2);
     players[0]->naplnZbran();
     reloading = false;
     reloadingThread.detach();
 }
 
 void Game::update() {
-//    exit = 1;
     for(int i = 0; i < PLAYERS_COUNT; i++) {
         if(players[0]->getPocetNabojov() == 0) {
             if (!reloading) {
@@ -231,17 +234,18 @@ void Game::render() {
             } else if (players[i]->getFacing() == BOT) {
                 SDL_RenderCopyEx(renderer, playerText[i], nullptr, &playR[i], 90, &centerP, SDL_FLIP_NONE);
             }
-            int x = 10 + 670 * i;
-            int y = 580;
-            int j = 5 - players[i]->getPocetNabojov();
-            for (int i = 0; i < 5 - j; i++) {
 
-                naboj.w = 30;
-                naboj.h = 30;
-                naboj.x = x;
-                naboj.y = y;
-                x += 20;
-                SDL_RenderCopyEx(renderer, bulletText[0], nullptr, &naboj, 270, &center, SDL_FLIP_NONE);
+
+            int q = 10 + 620 * !i;
+            int w = 520;
+            palR.w = 20;
+            palR.h = 20;
+            int pocet =  players[i]->getHp()/10;
+            for (int l = 0; l < pocet; l++) {
+                palR.x = q;
+                palR.y = w;
+                q += 15;
+                SDL_RenderCopyEx(renderer, palickaTx, nullptr, &palR, 0, &center, SDL_FLIP_NONE);
             }
 
             if (bulletText[i] != nullptr) {
@@ -258,6 +262,16 @@ void Game::render() {
             SDL_RenderCopy(renderer, prekazka, nullptr, &prekR);
         }
 
+        int x = 10 + 670;
+        int y = 580;
+        naboj.w = 30;
+        naboj.h = 30;
+        for (int k = 0; k < players[0]->getPocetNabojov(); k++) {
+            naboj.x = x;
+            naboj.y = y;
+            x += 20;
+            SDL_RenderCopyEx(renderer, bulletText[0], nullptr, &naboj, 270, &center, SDL_FLIP_NONE);
+        }
 
     }
 
@@ -313,8 +327,8 @@ void Game::updateFromMessage(PlayerData message) {
         kontrolaGulky();
     }
 }
-void Game::kontrolaGulky() {
 
+void Game::kontrolaGulky() {
     if(srcR[0].x >= 800 || srcR[0].y >= 600 || srcR[0].x < 0-srcR[0].w || srcR[0].y < 0-srcR[0].h) {
         bullets[0]->setLeti(false);
     }
