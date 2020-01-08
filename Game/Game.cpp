@@ -115,27 +115,13 @@ void Game::handleEvents() {
             break;
         }
         if (keys[SDL_SCANCODE_W]) {
-            if(players[0]->getSurX() >= prekR.x && players[0]->getSurY() > prekR.y && players[0]->getSurX() <= prekR.x + prekR.w && players[0]->getSurY() <= prekR.y + prekR.h) {
-                    players[0]->update(0, 0, TOP);
-            } else {
-                players[0]->update(0, -3, TOP);
-            }
+            players[0]->update(0, -3, TOP);
         }
         if (keys[SDL_SCANCODE_A]) {
-            if(players[0]->getSurX() <= prekR.x + prekR.w && players[0]->getSurX() > prekR.x && players[0]->getSurY() <= prekR.y + prekR.h && players[0]->getSurY() >= prekR.y) {
-                players[0]->update(0, 0, LEFT);
-            } else {
-                players[0]->update(-3, 0, LEFT);
-            }
-            //players[0]->update(-3, 0, LEFT);
+            players[0]->update(-3, 0, LEFT);
         }
         if (keys[SDL_SCANCODE_S]) {
-            if(players[0]->getSurX() >= prekR.x && players[0]->getSurX() <= prekR.x + prekR.w && players[0]->getSurY() + playR[0].h >= prekR.y && players[0]->getSurY() < prekR.y + prekR.h) {
-                players[0]->update(0, 0, BOT);
-            } else {
-                players[0]->update(0, 3, BOT);
-            }
-            //players[0]->update(0, 3, BOT);
+            players[0]->update(0, 3, BOT);
         }
         if (keys[SDL_SCANCODE_D]) {
             players[0]->update(3, 0, RIGHT);
@@ -227,9 +213,6 @@ void Game::render() {
         SDL_RenderCopy(renderer, koniecText[1], nullptr, nullptr);
     } else {
         SDL_RenderCopy(renderer, background, nullptr, nullptr);
-        SDL_RenderCopy(renderer, prekazka, nullptr, &prekR);
-
-    }
         for (int i = 0; i < PLAYERS_COUNT; i++) {
             if (players[i]->getFacing() == TOP) {
                 SDL_RenderCopyEx(renderer, playerText[i], nullptr, &playR[i], 270, &centerP, SDL_FLIP_NONE);
@@ -264,8 +247,11 @@ void Game::render() {
                     SDL_RenderCopyEx(renderer, bulletText[i], nullptr, &srcR[i], 90, &center, SDL_FLIP_NONE);
                 }
             }
+            SDL_RenderCopy(renderer, prekazka, nullptr, &prekR);
         }
 
+
+    }
 
         SDL_RenderPresent(renderer);
 
@@ -345,7 +331,7 @@ void Game::kontrolaGulky() {
         }
         if(bullets[i]->getSurX() >= players[!i]->getSurX() && bullets[i]->getSurX() <= players[!i]->getSurX() + playR[!i].w) {
             //bullets->setLeti(false);
-            if(bullets[i]->getSurY() >= players[!i]->getSurY() && bullets[i]->getSurY() <= players[!i]->getSurY() + playR[!i].h) {
+            if(bullets[i]->getSurY() + 5 >= players[!i]->getSurY() && bullets[i]->getSurY() + 5 <= players[!i]->getSurY() + playR[!i].h) {
                 bullets[i]->setLeti(false);
                 srcR[i].x = 800;
                 srcR[i].y = 800;

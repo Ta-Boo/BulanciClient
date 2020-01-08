@@ -5,7 +5,7 @@
 #include "Bullet.h"
 
 Bullet::Bullet() {
-    this->image = IMG_Load("bullets.png");
+    this->image = IMG_Load("bullet.png");
     this->facing = RIGHT;
 }
 
