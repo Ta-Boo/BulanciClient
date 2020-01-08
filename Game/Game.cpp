@@ -293,30 +293,6 @@ void Game::updateFromMessage(PlayerData message) {
     srcR[1].x = (message.bulletX);
     srcR[1].y = (message.bulletY);
 
-//    players[1]->update(message.players[1].pX, message.players[1].pY, message.players[1].facing);
-//    players[0]->setHp(message.players[1].hp);
-
-//    if(message.players[1].vystrelil) {
-//        bullets[1]->update(0,0,players[0]->getFacing());
-//        bullets[1]->setLeti(true);
-//        players[1]->vystrel();
-//        message.players[1].vystrelil = false;   //da sa poslat naspat?
-//        prvyRaz[1] = true;
-//        if(players[1]->getFacing() == RIGHT) {
-//            srcR[1].y = playR[1].y + 40;
-//            srcR[1].x = playR[1].x + 40;
-//        } else if(players[1]->getFacing() == TOP){
-//            srcR[1].y = playR[1].y;
-//            srcR[1].x = playR[1].x + 40;
-//        } else if(players[0]->getFacing() == BOT){
-//            srcR[1].y = playR[1].y + 40;
-//            srcR[1].x = playR[1].x + 10;
-//        } else if(players[1]->getFacing() == LEFT){
-//            srcR[1].y = playR[1].y + 10;
-//            srcR[1].x = playR[1].x;
-//        }
-//    }
-
     bullets[1]->setSurX(srcR[1].x);
     bullets[1]->setSurY(srcR[1].y);
 
@@ -328,25 +304,23 @@ void Game::updateFromMessage(PlayerData message) {
         kontrolaGulky();
     }
 }
-
 void Game::kontrolaGulky() {
-    for(int i = 0; i < PLAYERS_COUNT; i++) {
-        if(srcR[i].x >= 800 || srcR[i].y >= 600 || srcR[i].x < 0-srcR[i].w || srcR[i].y < 0-srcR[i].h) {
-            bullets[i]->setLeti(false);
-        }
-        if(srcR[i].x >= prekR.x +5 && srcR[i].y >= prekR.y + 5 && srcR[i].x <= prekR.w + prekR.x - 5 && srcR[i].y <= prekR.h + prekR.y - 5) {
-            bullets[i]->setLeti(false);
-            srcR[i].x = 800;
-            srcR[i].y = 800;
-        }
-        if(bullets[i]->getSurX() >= players[!i]->getSurX() && bullets[i]->getSurX() <= players[!i]->getSurX() + playR[!i].w) {
-            //bullets->setLeti(false);
-            if(bullets[i]->getSurY() + 5 >= players[!i]->getSurY() && bullets[i]->getSurY() + 5 <= players[!i]->getSurY() + playR[!i].h) {
-                bullets[i]->setLeti(false);
-                srcR[i].x = 800;
-                srcR[i].y = 800;
-                players[!i]->zasah();
-            }
+
+    if(srcR[0].x >= 800 || srcR[0].y >= 600 || srcR[0].x < 0-srcR[0].w || srcR[0].y < 0-srcR[0].h) {
+        bullets[0]->setLeti(false);
+    }
+    if(srcR[0].x >= prekR.x +5 && srcR[0].y >= prekR.y + 5 && srcR[0].x <= prekR.w + prekR.x - 5 && srcR[0].y <= prekR.h + prekR.y - 5) {
+        bullets[0]->setLeti(false);
+        srcR[0].x = 800;
+        srcR[0].y = 800;
+    }
+    if(bullets[0]->getSurX() >= players[1]->getSurX() && bullets[0]->getSurX() <= players[1]->getSurX() + playR[1].w) {
+        //bullets->setLeti(false);
+        if(bullets[0]->getSurY() + 5 >= players[1]->getSurY() && bullets[0]->getSurY() + 5 <= players[1]->getSurY() + playR[1].h) {
+            bullets[0]->setLeti(false);
+            srcR[0].x = 800;
+            srcR[0].y = 800;
+            players[1]->zasah();
         }
     }
 }

@@ -13,7 +13,6 @@ PlayerFactory::~PlayerFactory() {
 }
 
  PlayerData PlayerFactory::createPlayerData(char *input) {
-    //todo Hp:80|posX:600|posY:800|facing:0
      std::vector<string> playerStats;
      boost::split(playerStats, input, boost::is_any_of("|"));
      PlayerData player;
