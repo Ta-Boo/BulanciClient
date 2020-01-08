@@ -25,11 +25,12 @@ private:
     SDL_Texture* background;
     SDL_Texture* koniecText[2];
     SDL_Texture* prekazka;
+    SDL_Texture* palickaTx;
     SDL_Texture* playerText[PLAYERS_COUNT];
     SDL_Texture* bulletText[PLAYERS_COUNT];
 
     SDL_Rect srcR[PLAYERS_COUNT];
-    SDL_Rect naboj, prekR;
+    SDL_Rect naboj, palR, prekR;
     SDL_Rect playR[PLAYERS_COUNT];
 
     SDL_Point center;
